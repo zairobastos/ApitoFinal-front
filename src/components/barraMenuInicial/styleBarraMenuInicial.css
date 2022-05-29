@@ -1,0 +1,5 @@
+@layer{
+    .div{
+        @apply bg-black w-full
+    }
+}

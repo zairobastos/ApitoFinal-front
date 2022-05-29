@@ -1,9 +1,10 @@
+import React from 'react';
+import { Index } from './views/Index';
+
 function App() {
 	return (
-		<>
-			<h1>Olá Mundo</h1>
-		</>
+		<Index />
 	);
-}
+}	
 
 export default App;
