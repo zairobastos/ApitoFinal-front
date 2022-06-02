@@ -12,15 +12,18 @@ module.exports = {
         'padrao_tela': '85.25'
       },
       height:{
-        '102.3': '6.394',
+        '102.3': '6.794',
         'padrao_tela': '47.953'
       },
       fontSize:{
-        'menu': '1.332rem',
+        'menu': '1.632rem',
       },
       fontFamily:{
         'menu-inicial': ['League Spartan', 'sans-serif']
-      }
+      },
+      backgroundImage: theme=> ({
+        'jogador-index': "url('../src/assets/images/jogador-1.svg')",
+      }),
     },
   },
   plugins: [],
