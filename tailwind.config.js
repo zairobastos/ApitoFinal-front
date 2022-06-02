@@ -7,6 +7,7 @@ module.exports = {
   ],
   theme: {
     extend: {
+
       width:{
         '104.43': '6.527',
         'padrao_tela': '85.25'
@@ -16,14 +17,24 @@ module.exports = {
         'padrao_tela': '47.953'
       },
       fontSize:{
-        'menu': '1.632rem',
+        'menu': '1.432rem',
       },
       fontFamily:{
         'menu-inicial': ['League Spartan', 'sans-serif']
       },
-      backgroundImage: theme=> ({
-        'jogador-index': "url('../src/assets/images/jogador-1.svg')",
-      }),
+      colors:{
+        'preto': '#020905',
+        'verde-claro': '#00C041'
+      }
+    },
+    container:{
+      center: true,
+      padding: '1rem',
+      screens: {
+        lg: '1124px',
+        xl: '1124px',
+        '2xl': '1124px'
+      }
     },
   },
   plugins: [],
