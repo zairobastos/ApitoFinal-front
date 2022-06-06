@@ -3,7 +3,7 @@ import { Index } from './views/Index';
 
 function App() {
 	return (
-		<Index />
+		<Index/>
 	);
 }	
 

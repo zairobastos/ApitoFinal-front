@@ -16,3 +16,6 @@
 .btn-index-verde{
     @apply bg-verde-claro text-white
 }
+.btn-icon{
+    @apply shadow-md z-0 transition duration-300 text-xl mt-6
+}
