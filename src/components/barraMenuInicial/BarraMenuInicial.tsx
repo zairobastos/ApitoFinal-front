@@ -1,5 +1,6 @@
 import logoImage from '/src/assets/images/logo.svg'
 import Style from './styleBarraMenuInicial.css'
+import { Link } from 'react-router-dom'
 
 export function BarraMenuInicial(){
     return(
