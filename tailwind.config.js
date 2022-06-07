@@ -20,7 +20,7 @@ module.exports = {
         'menu': '1.432rem',
       },
       fontFamily:{
-        'menu-inicial': ['League Spartan', 'sans-serif']
+        'padrao': ['League Spartan', 'sans-serif']
       },
       colors:{
         'preto': '#020905',
@@ -34,7 +34,8 @@ module.exports = {
         lg: '1124px',
         xl: '1124px',
         '2xl': '1124px'
-      }
+      },
+      
     },
   },
   plugins: [],
