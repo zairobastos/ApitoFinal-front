@@ -1,7 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ApitoFinal } from "../views/ApitoFinal";
+import { Cadastrar } from "../views/cadastrar";
+import { Campeonatos } from "../views/campeonatos";
+import { PaginaInicial } from "../views/home";
 import { Home } from "../views/Home";
 import { Index } from "../views/Index";
+import { Jogadores } from "../views/jogadores";
+import { Login } from "../views/login";
+import { Times } from "../views/times";
 
 const Router = () => {
 	return (

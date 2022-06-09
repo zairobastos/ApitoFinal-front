@@ -1,42 +1,63 @@
 module.exports = {
-  content: [
-    "./src/**/*.tsx",
-    "./components/**/*.tsx",
-    "./views/**/*.tsx",
-    "./routes/**/*.tsx"
-  ],
-  theme: {
-    extend: {
-
-      width:{
-        '104.43': '6.527',
-        'padrao_tela': '85.25'
-      },
-      height:{
-        '102.3': '6.794',
-        'padrao_tela': '47.953'
-      },
-      fontSize:{
-        'menu': '1.432rem',
-      },
-      fontFamily:{
-        'padrao': ['League Spartan', 'sans-serif']
-      },
-      colors:{
-        'preto': '#020905',
-        'verde-claro': '#00C041'
-      }
-    },
-    container:{
-      center: true,
-      padding: '1rem',
-      screens: {
-        lg: '1124px',
-        xl: '1124px',
-        '2xl': '1124px'
-      },
-      
-    },
-  },
-  plugins: [],
-}
+	content: [
+		"./src/**/*.tsx",
+		"./components/**/*.tsx",
+		"./views/**/*.tsx",
+		"./routes/**/*.tsx",
+	],
+	theme: {
+		extend: {
+			width: {
+				104.43: "6.527",
+				padrao_tela: "85.25",
+			},
+			height: {
+				102.3: "6.794",
+				padrao_tela: "47.953",
+			},
+			fontSize: {
+				menu: "1.432rem",
+				titleLogin: "2.375rem",
+			},
+			fontFamily: {
+				padrao: ["League Spartan", "sans-serif"],
+				sans: ["Poppins", "sans-serif"],
+				home: ["League Spartan", "sans-serif"],
+			},
+			colors: {
+				preto: "#020905",
+				"verde-claro": "#00C041",
+				titleLoginFont: "#3C3C3C",
+				subtitleLogin: "#A2A2A2",
+				labelLogin: "#7C7C7C",
+				input: "#F9F9F9",
+				borderInput: "#E6E6E6",
+				borderMenu: "#FBFCFF",
+				navMenu: "#959FA8",
+				navMenuAtivo: "#020905",
+			},
+			lineHeight: {
+				12: "4.90437rem",
+			},
+			borderRadius: {
+				inputLogin: "0.1875rem",
+			},
+			borderWidth: {
+				inputBorder: "0.0625rem",
+			},
+			boxShadow: {
+				menu: "0px 4px 4px rgba(0, 0, 0, 0.05)",
+			},
+		},
+		container: {
+			center: true,
+			padding: "1rem",
+			screens: {
+				lg: "1124px",
+				xl: "1124px",
+				"2xl": "1124px",
+			},
+		},
+	},
+	plugins: [],
+};
