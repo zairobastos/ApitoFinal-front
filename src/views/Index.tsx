@@ -8,25 +8,19 @@ import { Sobre } from "./Sobre";
 export function Index() {
 	
 	return (
-		<div className="snap-y snap-mandatory overflow-scroll">
-			<div className="snap-start">
+		<div id="index">
+			
 				<Home/>
-			</div>
-			<div className="snap-start">
+			
 				<ApitoFinal/>
-			</div>
-			<div className="snap-start">
+			
 				<Servicos />
-			</div>
-			<div className="snap-start">
+			
 				<Sobre />
-			</div>
-			<div className="snap-start">
+			
 				<NossaEquipe/>
-			</div>
-			<div className="snap-start">
+			
 				<Copyrights />
-			</div>
 		</div>
 	);
 }

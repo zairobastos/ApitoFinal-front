@@ -9,9 +9,7 @@ const Router = () => {
 			<Routes>
 				<Route path="/" element={<Index />} >
 					<Route path="home" element={<Home/>}/>
-					<Route path="apitofinal" element={<ApitoFinal/>}/>
 				</Route>
-				
 			</Routes>
 		</BrowserRouter>
 	);

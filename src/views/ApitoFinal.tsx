@@ -4,6 +4,8 @@ import imgTrophy from "../assets/images/trophy.svg"
 import imgCicleGrid from "../assets/images/cicle_grid.svg"
 import imgFooterServices from "../assets/images/footerServices.svg"
 import { CardServices } from "../components/cardServices/CardServices"
+import { CaretCircleDown, CaretCircleUp } from "phosphor-react"
+import { Link } from "react-scroll"
 
 export function ApitoFinal(){
 
@@ -33,17 +35,23 @@ export function ApitoFinal(){
 	});
 
     sr.reveal("#titulo-sessao", {delay: 300, origin: "top" })
+    sr.reveal("#icon-top", {delay: 300, origin: "top" })
 
     return(
-        <section className="relative w-full h-full lg:h-[41rem] ">
+        <section id="apitofinal" className="relative w-full h-full lg:h-[42.8rem] ">
             <div 
                 className="
                     flex flex-col flex-start items-center gap-14"
             >
+                <span className="pt-1">
+                    <Link to="index" smooth={true} duration={1000}>
+                        <CaretCircleUp className="id=icon-top hover:cursor-pointer" size={56} color="#F4F0F0" />
+                    </Link>
+                </span>
                 <span 
                     id="titulo-sessao"
                     className="font-padrao text-verde-claro font-black uppercase 
-                        text-4xl lg:text-5xl pt-[8.033rem] lg:pt-[5.033rem]"
+                        text-4xl lg:text-5xl pt-[8.033rem] lg:pt-[1.033rem] h-10"
                 >
                     Apito Final
                 </span>
@@ -57,12 +65,21 @@ export function ApitoFinal(){
                     <CardServices caminho={cards[2].caminho} title={cards[2].title} text={cards[2].texto} />
                 </div>
                 
-                <img className="" src={imgFooterServices}></img>
+                
+                <div className="flex items-center">
+                    <div className="relative">
+                        <img className="" src={imgFooterServices}></img>
+                    </div>
+                    <div className="absolute ml-5 lg:ml-96 mb-3 lg:mb-0 lg:mt-12">
+                        <Link to="servicos" smooth={true} duration={1000}>
+                            <CaretCircleDown className="ml-5 lg:ml-64 hover:cursor-pointer" size={56} color="#F4F0F0" />
+                        </Link>
+                    </div>
+                </div>
+                
                 
             </div>
-
-            
-               
+         
         </section>
     )
 }

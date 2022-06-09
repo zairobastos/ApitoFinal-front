@@ -1,34 +1,37 @@
 import logoImage from "../../assets/images/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, animateScroll as scroll } from "react-scroll";
 
 export function BarraMenuInicial() {
+	
 	return (
-		<header>
-			<nav className="container flex items-center py-2 mt-2 sm:mt-8">
-				<div className="py-1">
-					<Link to={'/'}>
+		<header className="mt-0 sticky">
+			<nav className="flex items-center py-2 mt-2 px-10 lg:px-12">
+				<div className="">
+					<Link to='index' smooth={true} duration={1000}>
 						<img src={logoImage}></img>
-          </Link>
+          			</Link>
 				</div>
 				<ul className="hidden sm:flex flex-1 justify-end items-center gap-12 font-padrao text-menu uppercase">
-					<li className=" cursor-pointer hover:text-gray-600 ">
-						<Link to={'/home'}>
-              Inicio
-            </Link>
+					<li className="cursor-pointer hover:text-gray-600 ">
+						<Link to="index" smooth={true} duration={1000}>
+							Inicio
+						</Link>
 					</li>
 					<li className=" cursor-pointer hover:text-gray-600">
-						<Link to={'/apitofinal'}>
-              Apito Final
-            </Link>
+						<Link to="apitofinal" smooth={true} duration={1000}>
+							Apito Final
+						</Link>
 					</li>
 					<li className=" cursor-pointer hover:text-gray-600">
-						<a href="#">Sobre</a>
+						<Link to="sobre" smooth={true} duration={1000}>
+							Sobre
+						</Link>
 					</li>
 					<li className=" cursor-pointer hover:text-gray-600">
-						<a href="#">Cadastre-se</a>
+						Cadastre-se
 					</li>
 					<li className=" cursor-pointer hover:text-gray-600">
-						<a href="#">Entrar</a>
+						Entrar
 					</li>
 				</ul>
 				<div className="flex sm:hidden flex-1 justify-end">

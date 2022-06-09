@@ -15,10 +15,10 @@ export function Home(){
 
 
     return(
-        <section id="home">
+        <section id="home" className="">
 			<BarraMenuInicial />
 			<section className="relative">
-				<div className="container flex flex-col-reverse lg:flex-row items-center gap-2 lg:gap-0 mt-14 lg:mt-70 ">
+				<div className="flex flex-col-reverse lg:flex-row items-center gap-2 lg:gap-24 mt-2 lg:mt-90 px-10 lg:px-12">
 					{/**Conteúdo */}
 					<div
 						id="home-text"
@@ -78,7 +78,7 @@ export function Home(){
 					{/**imagem */}
 					<div
 						id="home-img"
-						className="flex justify-center flex-1 mb-10 md:mb-20 lg:mg-0 z-5"
+						className="flex justify-right flex-1 mb-10 md:mb-20 lg:mg-0 "
 					>
 						<img
 							className="w-full h-full sm:w-2/3 sm:h-2/3 md:w-3/4 md:h-3/"
