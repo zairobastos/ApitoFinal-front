@@ -3,7 +3,7 @@ import imgWallet from "../assets/images/wallet.svg"
 import imgTrophy from "../assets/images/trophy.svg"
 import imgCicleGrid from "../assets/images/cicle_grid.svg"
 import imgFooterServices from "../assets/images/footerServices.svg"
-import { CardServices } from "../components/cardServices/CardServices"
+import { CardServices } from "../components/cardApitoFinal/CardServices"
 import { CaretCircleDown, CaretCircleUp } from "phosphor-react"
 import { Link } from "react-scroll"
 
@@ -43,15 +43,15 @@ export function ApitoFinal(){
                 className="
                     flex flex-col flex-start items-center gap-14"
             >
-                <span className="pt-1">
+                <div className="pt-1">
                     <Link to="index" smooth={true} duration={1000}>
                         <CaretCircleUp className="id=icon-top hover:cursor-pointer" size={56} color="#F4F0F0" />
                     </Link>
-                </span>
+                </div>
                 <span 
                     id="titulo-sessao"
                     className="font-padrao text-verde-claro font-black uppercase 
-                        text-4xl lg:text-5xl pt-[8.033rem] lg:pt-[1.033rem] h-10"
+                        text-4xl lg:text-5xl pt-[2.033rem] lg:pt-[1.033rem] h-10"
                 >
                     Apito Final
                 </span>
@@ -70,9 +70,9 @@ export function ApitoFinal(){
                     <div className="relative">
                         <img className="" src={imgFooterServices}></img>
                     </div>
-                    <div className="absolute ml-5 lg:ml-96 mb-3 lg:mb-0 lg:mt-12">
+                    <div className="absolute ml-52 lg:ml-96 mb-3 lg:mb-0 lg:mt-12">
                         <Link to="servicos" smooth={true} duration={1000}>
-                            <CaretCircleDown className="ml-5 lg:ml-64 hover:cursor-pointer" size={56} color="#F4F0F0" />
+                            <CaretCircleDown className=" ml-2 lg:ml-64 hover:cursor-pointer" size={56} color="#EBE5E5" />
                         </Link>
                     </div>
                 </div>
