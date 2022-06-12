@@ -10,6 +10,8 @@ module.exports = {
 			width: {
 				104.43: "6.527",
 				padrao_tela: "85.25",
+				telaCards: "70%",
+				card: "30%",
 			},
 			height: {
 				102.3: "6.794",
@@ -35,6 +37,11 @@ module.exports = {
 				borderMenu: "#FBFCFF",
 				navMenu: "#959FA8",
 				navMenuAtivo: "#020905",
+				telaSubtitulo: "rgba(2, 9, 5, 0.5)",
+				borderCard: "rgba(0, 0, 0, 0.05)",
+				fontCard: "rgba(2, 9, 5, 0.8)",
+				borderForm: "#f3f4f7",
+				buttonCard: "#018D30",
 			},
 			lineHeight: {
 				12: "4.90437rem",
@@ -47,6 +54,9 @@ module.exports = {
 			},
 			boxShadow: {
 				menu: "0px 4px 4px rgba(0, 0, 0, 0.05)",
+			},
+			spacing: {
+				gapCards: "5%",
 			},
 		},
 		container: {
