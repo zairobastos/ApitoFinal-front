@@ -72,7 +72,7 @@ export function ApitoFinal(){
                     </div>
                     <div className="absolute ml-52 lg:ml-96 mb-3 lg:mb-0 lg:mt-12">
                         <Link to="servicos" smooth={true} duration={1000}>
-                            <CaretCircleDown className=" ml-2 lg:ml-64 hover:cursor-pointer" size={56} color="#EBE5E5" />
+                            <CaretCircleDown className="ml-2 lg:ml-64 hover:cursor-pointer" size={56} color="#EBE5E5" />
                         </Link>
                     </div>
                 </div>

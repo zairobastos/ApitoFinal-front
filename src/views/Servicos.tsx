@@ -48,7 +48,9 @@ export function Servicos(){
 
                 <div className="flex items-center">
                     <div className="pl-20 lg:pl-96  w-2/4 lg:w-full">
-                        <img className="pl-50 lg:pl-64" src={bg} alt="" />
+                        <div className="lg:pl-80">
+                            <img className="lg:w-[45.953rem]" src={bg} alt="" />
+                        </div>
                     </div>
                     <div className="absolute ml-12 lg:ml-96 mb-3 lg:mb-0 lg:mt-12">
                         <Link to="sobre" smooth={true} duration={1000}>
