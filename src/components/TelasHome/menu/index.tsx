@@ -11,7 +11,7 @@ type ativos = {
 
 export const Menur = ({ ativo, ativo1, ativo2, ativo3 }: ativos) => {
 	return (
-		<header className="flex flex-row flex-wrap h-20 shadow-menu  px-5 border-b border-solid border-borderMenu">
+		<header className="flex flex-row flex-wrap h-20 shadow-menu  px-10 border-b border-solid border-borderMenu">
 			<nav className="flex flex-wrap flex-row items-center gap-x-12">
 				<figure>
 					<img src={logo} alt="logo" />
