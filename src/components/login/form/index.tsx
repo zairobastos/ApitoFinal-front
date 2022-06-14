@@ -1,3 +1,4 @@
+import { Password } from "./password/index";
 import { Inputs } from "../input";
 
 export const Input = () => {
@@ -10,12 +11,7 @@ export const Input = () => {
 				type="email"
 				mb="mb-7"
 			/>
-			<Inputs
-				id="senha"
-				label="Senha"
-				placeholder="Senha"
-				type="password"
-			/>
+			<Password id="senha" label="Senha" placeholder="Senha" />
 		</>
 	);
 };

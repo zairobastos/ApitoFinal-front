@@ -5,6 +5,7 @@ import { HeaderForm } from "../../components/login/headerForm";
 import { Input } from "../../components/login/form";
 import { CadContainer } from "./style";
 import { Inputs } from "../../components/login/input";
+import { Password } from "../../components/login/form/password";
 
 export const Cadastrar = () => {
 	return (
@@ -30,12 +31,11 @@ export const Cadastrar = () => {
 						mb="mb-7"
 					/>
 					<Input />
-					<Inputs
+					<Password
 						id="confirmarSenha"
 						label="Confirmar Senha"
-						placeholder="Senha"
-						type="password"
-						mb="mt-7"
+						placeholder="Confirmar Senha"
+						mt="mt-7"
 					/>
 					<button className="bg-verde-claro text-white mt-6 mb-3 rounded-inputLogin py-2.5 text-base font-sans font-semibold ">
 						Cadastre-se

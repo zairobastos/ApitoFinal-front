@@ -16,6 +16,7 @@ module.exports = {
 			height: {
 				102.3: "6.794",
 				padrao_tela: "47.953",
+				13: "54px",
 			},
 			fontSize: {
 				menu: "1.432rem",
