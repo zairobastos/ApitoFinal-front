@@ -10,7 +10,6 @@ export const Inputi = styled.div`
 	.olho {
 		width: 48px;
 		padding: 0px 8px;
-		border: 0.0625rem solid #e6e6e6;
 		border-left: none;
 		border-top-right-radius: 3px;
 		border-bottom-right-radius: 3px;

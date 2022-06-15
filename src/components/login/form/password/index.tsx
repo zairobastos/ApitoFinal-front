@@ -40,7 +40,7 @@ export const Password = ({ id, label, placeholder, mt }: dados) => {
 					/>
 				) : (
 					<AiFillEyeInvisible
-						className="h-13 w-8 olho"
+						className="h-13 w-8 olho bg-input"
 						onClick={handleClick}
 					/>
 				)}
