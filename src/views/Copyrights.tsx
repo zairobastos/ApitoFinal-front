@@ -1,7 +1,16 @@
 export function Copyrights(){
     return(
-        <div className="snap-start w-full h-[47.953rem] bg-rose-500">
-            Copyrights
-        </div>
+        <section id="copyrights" className=" w-full h-full lg:h-[47.953rem] ">
+            <div 
+                className=" h-[29.188rem] bg-black"
+            >
+                
+
+            </div>
+
+            <div>
+
+            </div>
+        </section>
     )
 }
