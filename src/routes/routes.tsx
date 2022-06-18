@@ -8,6 +8,7 @@ import { Index } from "../views/Index";
 import { Jogadores } from "../views/jogadores";
 import { Login } from "../views/login";
 import { Times } from "../views/times";
+import { RecuperarSenha } from "../views/recuperarSenha";
 
 const Router = () => {
 	return (
@@ -22,6 +23,7 @@ const Router = () => {
 				<Route path="/campeonato" element={<Campeonatos />} />
 				<Route path="/times" element={<Times />} />
 				<Route path="/jogadores" element={<Jogadores />} />
+				<Route path="/recuperarSenha" element={<RecuperarSenha />} />
 			</Routes>
 		</BrowserRouter>
 	);

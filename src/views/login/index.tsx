@@ -135,9 +135,12 @@ export const Login = () => {
 							</p>
 						</div>
 					</div>
-					<p className="text-verde-claro font-sans font-semibold text-right mt-7 text-base">
+					<Link
+						to={"/recuperarSenha"}
+						className="text-verde-claro font-sans font-semibold text-right mt-7 text-base"
+					>
 						Esqueceu a senha?
-					</p>
+					</Link>
 					<button className="bg-verde-claro text-white mt-6 rounded-inputLogin py-2.5 text-base font-sans font-semibold ">
 						Entrar
 					</button>
