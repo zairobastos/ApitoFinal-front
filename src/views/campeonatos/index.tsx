@@ -10,7 +10,7 @@ export const Campeonatos = () => {
 	return (
 		<div>
 			<Menur ativo1="ativo" />
-			<section className="flex flex-col px-10 mt-16">
+			<section className="flex flex-col px-10 mt-32">
 				<Titulo
 					titulo="Campeonatos"
 					subtitulo="Lista de seus campeonatos cadastrados"

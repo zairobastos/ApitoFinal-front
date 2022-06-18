@@ -2,6 +2,12 @@ import { Link } from "react-router-dom";
 import logo from "../../../assets/images/Logotype (3) 2.svg";
 import { Lista } from "./style";
 
+import { FaUserCircle } from "react-icons/fa";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { FiLogOut } from "react-icons/fi";
+
+import { useState } from "react";
+
 type ativos = {
 	ativo?: string;
 	ativo1?: string;
@@ -10,43 +16,73 @@ type ativos = {
 };
 
 export const Menur = ({ ativo, ativo1, ativo2, ativo3 }: ativos) => {
+	const [janela, setJanela] = useState(false);
+	const aparecer = () => {
+		setJanela(!janela);
+	};
 	return (
-		<header className="flex flex-row flex-wrap h-20 shadow-menu  px-10 border-b border-solid border-borderMenu">
-			<nav className="flex flex-wrap flex-row items-center gap-x-12">
-				<figure>
-					<img src={logo} alt="logo" />
-				</figure>
-				<Lista className="flex flex-row flex-wrap gap-x-7 font-home font-light  text-lg h-full items-center text-navMenu">
-					<Link
-						to={"/paginaInicial"}
-						className={`h-full ${ativo} items-center flex cursor-pointer hover:text-navMenuAtivo transition-colors`}
+		<>
+			<header className="flex bg-white top-0 w-full fixed flex-row flex-wrap justify-between h-20 shadow-menu  px-10 border-b border-solid border-borderMenu">
+				<nav className="flex flex-wrap flex-row items-center gap-x-12">
+					<figure>
+						<img src={logo} alt="logo" />
+					</figure>
+					<Lista className="flex flex-row flex-wrap gap-x-7 font-home font-light  text-lg h-full items-center text-navMenu">
+						<Link
+							to={"/paginaInicial"}
+							className={`h-full ${ativo} items-center flex cursor-pointer hover:text-navMenuAtivo transition-colors`}
+						>
+							INÍCIO
+						</Link>
+						<Link
+							to={"/campeonato"}
+							className={`h-full ${ativo1} items-center flex cursor-pointer hover:text-navMenuAtivo transition-colors`}
+						>
+							CAMPEONATOS
+						</Link>
+						<Link
+							to={"/times"}
+							className={`h-full ${ativo2} items-center flex cursor-pointer hover:text-navMenuAtivo transition-colors`}
+						>
+							TIMES
+						</Link>
+						<Link
+							to={"/jogadores"}
+							className={`h-full ${ativo3} items-center flex cursor-pointer hover:text-navMenuAtivo transition-colors`}
+						>
+							JOGADORES
+						</Link>
+					</Lista>
+				</nav>
+				<div className="flex items-center gap-3">
+					<figure className=" h-full items-center justify-center flex">
+						<FaUserCircle className="w-full text-5xl" />
+					</figure>
+					<div
+						className="flex flex-row flex-wrap items-center gap-3 cursor-pointer"
+						onClick={aparecer}
 					>
-						INÍCIO
-					</Link>
-					<Link
-						to={"/campeonato"}
-						className={`h-full ${ativo1} items-center flex cursor-pointer hover:text-navMenuAtivo transition-colors`}
-					>
-						CAMPEONATOS
-					</Link>
-					<Link
-						to={"/times"}
-						className={`h-full ${ativo2} items-center flex cursor-pointer hover:text-navMenuAtivo transition-colors`}
-					>
-						TIMES
-					</Link>
-					<Link
-						to={"/jogadores"}
-						className={`h-full ${ativo3} items-center flex cursor-pointer hover:text-navMenuAtivo transition-colors`}
-					>
-						JOGADORES
-					</Link>
-				</Lista>
-			</nav>
-			<div>
-				<figure></figure>
-				<div></div>
-			</div>
-		</header>
+						<h2 className="text-xl font-padrao font-bold text-navMenu">
+							Zairo Bastos
+						</h2>
+						{janela ? (
+							<IoIosArrowUp className="text-xl text-navMenu" />
+						) : (
+							<IoIosArrowDown className="text-xl text-navMenu" />
+						)}
+					</div>
+				</div>
+				{janela && (
+					<div className="flex bg-white flex-col flex-wrap z-10 w-36 fixed right-0 mr-10 mt-24 rounded-xl p-2 border-2 border-solid border-borderForm shadow-menu ">
+						<ul className="flex flex-col justify-center items-center text-base font-home font-bold">
+							<li>Minha Conta</li>
+							<li className="flex flex-row flex-wrap items-center gap-2 text-red-500">
+								Sair <FiLogOut />
+							</li>
+						</ul>
+					</div>
+				)}
+			</header>
+		</>
 	);
 };

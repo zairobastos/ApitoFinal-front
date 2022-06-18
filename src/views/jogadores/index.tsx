@@ -11,7 +11,7 @@ export const Jogadores = () => {
 		<div>
 			<Menur ativo3="ativo" />
 
-			<section className="flex flex-col px-10 mt-16 ">
+			<section className="flex flex-col px-10 mt-32 ">
 				<Titulo
 					titulo="Jogadores"
 					subtitulo="Lista de seus jogadores de futebol cadastrados"

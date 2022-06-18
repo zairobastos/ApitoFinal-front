@@ -30,12 +30,10 @@ export const Cadastrar = () => {
 			nome: "",
 			email: "",
 			password: "",
-			confirmPassword: "",
+			senha: "",
 		},
 		validationSchema: SingupSchema,
-		onSubmit: (values) => {
-			console.log(values);
-		},
+		onSubmit: (values) => {},
 	});
 	let [borda, borda1, borda2, borda3, borda4, borda5] = "border-borderInput";
 	if (formik.errors.nome && formik.values.nome != "") {
@@ -55,10 +53,10 @@ export const Cadastrar = () => {
 		borda2 = "border-green-500";
 		borda3 = "border-green-500";
 	}
-	if (formik.errors.confirmPassword && formik.values.confirmPassword != "") {
+	if (formik.errors.senha && formik.values.senha != "") {
 		borda4 = "border-red-500";
 		borda5 = "border-red-500";
-	} else if (formik.values.confirmPassword != "") {
+	} else if (formik.values.senha != "") {
 		borda4 = "border-green-500";
 		borda5 = "border-green-500";
 	}
@@ -88,7 +86,6 @@ export const Cadastrar = () => {
 					action="http://localhost:3333/usuario/cadastrar"
 					method="post"
 					className="flex flex-col w-full"
-					onSubmit={formik.handleSubmit}
 				>
 					<HeaderForm
 						title="Cadastre-se no Apito Final"
@@ -189,11 +186,11 @@ export const Cadastrar = () => {
 							<Inputi className="flex flex-wrap items-center">
 								<input
 									type={tipo2}
-									name="confirmPassword"
+									name="senha"
 									id="confirmPassword"
 									placeholder="Confirmar Senha"
 									onChange={formik.handleChange}
-									value={formik.values.confirmPassword}
+									value={formik.values.senha}
 									onBlur={formik.handleBlur}
 									className={`px-2.5 password py-3.5 rounded-inputLogin bg-input border-inputBorder border-solid ${borda4}`}
 								/>
@@ -210,14 +207,16 @@ export const Cadastrar = () => {
 								)}
 							</Inputi>
 						</div>
-						{formik.touched.confirmPassword &&
-						formik.errors.confirmPassword ? (
+						{formik.touched.senha && formik.errors.senha ? (
 							<p className="text-red-500 font-sans text-base">
-								{formik.errors.confirmPassword}
+								{formik.errors.senha}
 							</p>
 						) : null}
 					</div>
-					<button className="bg-verde-claro text-white mt-6 mb-3 rounded-inputLogin py-2.5 text-base font-sans font-semibold ">
+					<button
+						type="submit"
+						className="bg-verde-claro text-white mt-6 mb-3 rounded-inputLogin py-2.5 text-base font-sans font-semibold "
+					>
 						Cadastre-se
 					</button>
 				</form>
