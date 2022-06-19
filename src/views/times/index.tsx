@@ -7,6 +7,10 @@ import RealMadrid from "../../assets/images/RealMadrid.svg";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { FormEvent, useState } from "react";
+import { api } from "../../server/api";
+import Swal from "sweetalert2";
+import { CircleNotch } from "phosphor-react";
 
 export const Times = () => {
 	const cadastrarTimes = Yup.object().shape({
@@ -40,6 +44,61 @@ export const Times = () => {
 		borda1 = "border-green-500";
 	}
 
+	let disable = "bg-buttonCard";
+	const isDisableButton = () => {
+		if (
+			formik.values.nome == "" ||
+			formik.values.abreviacao == "" ||
+			formik.values.escudo == "" ||
+			!formik.isValid
+		) {
+			disable = "bg-buttonCard";
+			return true;
+		} else {
+			disable = "bg-verde-claro";
+			return false;
+		}
+	};
+
+	const [loading, setLoading] = useState(false);
+
+	function handleSubmit(e: FormEvent) {
+		e.preventDefault();
+		setLoading(true);
+		const Toast = Swal.mixin({
+			toast: true,
+			position: "top-end",
+			showConfirmButton: false,
+			timer: 3000,
+			timerProgressBar: true,
+			didOpen: (toast) => {
+				toast.addEventListener("mouseenter", Swal.stopTimer);
+				toast.addEventListener("mouseleave", Swal.resumeTimer);
+			},
+		});
+		setTimeout(() => {
+			api.post("times/cadastrar", {
+				nome: formik.values.nome,
+				abreviacao: formik.values.abreviacao,
+				escudo: formik.values.escudo.replace("C:\\fakepath\\", ""),
+			})
+				.then((res) => {
+					Toast.fire({
+						icon: "success",
+						title: `${res.data.message}`,
+					});
+					console.log(res.data);
+				})
+				.catch((err) => {
+					Toast.fire({
+						icon: "error",
+						title: `${err.response.data.message}`,
+					});
+					console.error(err);
+				});
+			setLoading(false);
+		}, 2000);
+	}
 	return (
 		<div>
 			<Menur ativo2="ativo" />
@@ -72,7 +131,7 @@ export const Times = () => {
 							Novo Time
 						</h2>
 						<form
-							action="http://localhost:3333/times/cadastrar"
+							onSubmit={handleSubmit}
 							method="post"
 							className="flex flex-col flex-wrap gap-8"
 							encType="multipart/form-data"
@@ -147,8 +206,21 @@ export const Times = () => {
 										className={`px-2.5 password py-3.5 rounded-inputLogin bg-input border-inputBorder border-solid w-full`}
 									/>
 								</div>
-								<button className="bg-buttonCard rounded text-white font-home font-black text-lg py-2 mb-4">
-									Cadastrar Time
+								<button
+									type="submit"
+									disabled={isDisableButton()}
+									className={`rounded text-white font-home font-black text-lg py-2 mb-4 ${disable}`}
+								>
+									{loading ? (
+										<div className="h-6 flex justify-center items-center">
+											<CircleNotch
+												size={30}
+												className="animate-spin"
+											/>
+										</div>
+									) : (
+										"Cadastrar Time"
+									)}
 								</button>
 							</div>
 						</form>

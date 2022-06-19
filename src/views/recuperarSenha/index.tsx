@@ -2,6 +2,10 @@ import Logo from "../../assets/images/logo.svg";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
+import { FormEvent, useState } from "react";
+import { api } from "../../server/api";
+import Swal from "sweetalert2";
+import { CircleNotch } from "phosphor-react";
 export const RecuperarSenha = () => {
 	const schema = Yup.object().shape({
 		email: Yup.string()
@@ -21,6 +25,55 @@ export const RecuperarSenha = () => {
 	} else if (formik.values.email != "") {
 		borda = "border-green-500";
 	}
+
+	const [loading, setLoading] = useState(false);
+	function handleSubmitForm(e: FormEvent) {
+		e.preventDefault();
+		const Toast = Swal.mixin({
+			toast: true,
+			position: "top-end",
+			showConfirmButton: false,
+			timer: 3000,
+			timerProgressBar: true,
+			didOpen: (toast) => {
+				toast.addEventListener("mouseenter", Swal.stopTimer);
+				toast.addEventListener("mouseleave", Swal.resumeTimer);
+			},
+		});
+		setLoading(true);
+		setTimeout(() => {
+			api.post("/usuario/recuperar", {
+				email: formik.values.email,
+			})
+				.then((res) => {
+					Toast.fire({
+						icon: "success",
+						title: `${res.data.message}`,
+					});
+					setTimeout(() => {
+						window.location.href = "http://localhost:3000/login";
+					}, 2000);
+				})
+				.catch((err) => {
+					Toast.fire({
+						icon: "error",
+						title: `${err.response.data.message}`,
+					});
+				});
+			setLoading(false);
+		}, 2000);
+	}
+	let disable = "bg-buttonCard";
+	const isDisableButton = () => {
+		if (formik.values.email == "" || !formik.isValid) {
+			disable = "bg-buttonCard";
+			return true;
+		} else {
+			disable = "bg-verde-claro";
+			return false;
+		}
+	};
+
 	return (
 		<div className="bg-white h-screen">
 			<header className="flex justify-center">
@@ -35,10 +88,7 @@ export const RecuperarSenha = () => {
 				</Link>
 			</header>
 			<main className="flex justify-center mx-auto w-2/5">
-				<form
-					action="http://localhost:3333/usuario/recuperar"
-					method="post"
-				>
+				<form onSubmit={handleSubmitForm} method="post">
 					<fieldset className="flex bg-white flex-col flex-wrap rounded-xl p-4 border-2 border-solid border-borderForm shadow-menu ">
 						<legend className="text-base font-sans font-semibold text-titleLoginFont">
 							Recuperar Senha
@@ -46,7 +96,7 @@ export const RecuperarSenha = () => {
 						<div className="flex flex-col flex-wrap gap-6 w-full">
 							<h3 className="text-base font-sans font-semibold text-titleLoginFont">
 								Para recuperar a sua senha, informe seu endereço
-								de email que nós enviaremos um link para a
+								de email que nós enviaremos um código para a
 								alteração da senha.
 							</h3>
 							<div className="flex flex-col flex-wrap gap-1.5">
@@ -73,8 +123,21 @@ export const RecuperarSenha = () => {
 									</p>
 								) : null}
 							</div>
-							<button className="bg-buttonCard text-white rounded-inputLogin py-2.5 text-base font-sans font-semibold ">
-								Recuperar Senha
+							<button
+								type="submit"
+								disabled={isDisableButton()}
+								className={` text-white rounded-inputLogin py-2.5 text-base font-sans font-semibold ${disable}`}
+							>
+								{loading ? (
+									<div className="h-6 flex justify-center items-center">
+										<CircleNotch
+											size={30}
+											className="animate-spin"
+										/>
+									</div>
+								) : (
+									"Recuperar Senha"
+								)}
 							</button>
 						</div>
 					</fieldset>
