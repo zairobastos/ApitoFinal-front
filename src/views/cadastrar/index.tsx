@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { FooterImg } from "../../components/login/footer";
 import HeaderLogo from "../../components/login/logo";
 import { HeaderForm } from "../../components/login/headerForm";
@@ -125,7 +125,7 @@ export const Cadastrar = () => {
 						title: `${res.data.message}`,
 					});
 					setTimeout(() => {
-						window.location.href = "http://localhost:3000/login";
+						window.location.href = "/login";
 					}, 3000);
 				})
 				.catch((err) => {
