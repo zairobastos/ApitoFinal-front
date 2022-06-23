@@ -1,14 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { FooterImg } from "../../components/login/footer";
 import HeaderLogo from "../../components/login/logo";
 import { HeaderForm } from "../../components/login/headerForm";
 import { CadContainer } from "./style";
+import "./estilo.css";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Inputi } from "../../components/login/form/style";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
+import { api } from "../../server/api";
+import { CircleNotch } from "phosphor-react";
+import Swal from "sweetalert2";
 
 export const Cadastrar = () => {
 	const SingupSchema = Yup.object().shape({
@@ -21,7 +25,7 @@ export const Cadastrar = () => {
 		password: Yup.string()
 			.min(6, "A senha deve ter no mínimo 6 caracteres")
 			.required("A senha é obrigatória"),
-		confirmPassword: Yup.string()
+		senha: Yup.string()
 			.oneOf([Yup.ref("password"), null], "As senhas não conferem")
 			.required("A confirmação de senha é obrigatória"),
 	});
@@ -30,12 +34,10 @@ export const Cadastrar = () => {
 			nome: "",
 			email: "",
 			password: "",
-			confirmPassword: "",
+			senha: "",
 		},
 		validationSchema: SingupSchema,
-		onSubmit: (values) => {
-			console.log(values);
-		},
+		onSubmit: (values) => {},
 	});
 	let [borda, borda1, borda2, borda3, borda4, borda5] = "border-borderInput";
 	if (formik.errors.nome && formik.values.nome != "") {
@@ -55,10 +57,10 @@ export const Cadastrar = () => {
 		borda2 = "border-green-500";
 		borda3 = "border-green-500";
 	}
-	if (formik.errors.confirmPassword && formik.values.confirmPassword != "") {
+	if (formik.errors.senha && formik.values.senha != "") {
 		borda4 = "border-red-500";
 		borda5 = "border-red-500";
-	} else if (formik.values.confirmPassword != "") {
+	} else if (formik.values.senha != "") {
 		borda4 = "border-green-500";
 		borda5 = "border-green-500";
 	}
@@ -78,6 +80,64 @@ export const Cadastrar = () => {
 		setShow2(!show2);
 		setTipo2(show2 ? "password" : "text");
 	};
+	let disable = "bg-buttonCard";
+	const isDisableButton = () => {
+		if (
+			formik.values.nome == "" ||
+			formik.values.email == "" ||
+			formik.values.password == "" ||
+			formik.values.senha == "" ||
+			!formik.isValid
+		) {
+			disable = "bg-buttonCard";
+			return true;
+		} else {
+			disable = "bg-verde-claro";
+			return false;
+		}
+	};
+
+	const [loading, setLoading] = useState(false);
+
+	function handleSubmitCadastro(e: FormEvent) {
+		e.preventDefault();
+		setLoading(true);
+		const Toast = Swal.mixin({
+			toast: true,
+			position: "top-end",
+			showConfirmButton: false,
+			timer: 3000,
+			timerProgressBar: true,
+			didOpen: (toast) => {
+				toast.addEventListener("mouseenter", Swal.stopTimer);
+				toast.addEventListener("mouseleave", Swal.resumeTimer);
+			},
+		});
+		setTimeout(() => {
+			api.post("/usuario/cadastrar", {
+				nome: formik.values.nome,
+				email: formik.values.email,
+				senha: formik.values.senha,
+			})
+				.then((res) => {
+					Toast.fire({
+						icon: "success",
+						title: `${res.data.message}`,
+					});
+					setTimeout(() => {
+						window.location.href = "/login";
+					}, 3000);
+				})
+				.catch((err) => {
+					Toast.fire({
+						icon: "error",
+						title: `${err.response.data.message}`,
+					});
+				});
+			setLoading(false);
+		}, 2000);
+	}
+
 	return (
 		<CadContainer>
 			<section className="flex flex-col px-8 w-1/2 items-start">
@@ -85,10 +145,9 @@ export const Cadastrar = () => {
 					<HeaderLogo />
 				</Link>
 				<form
-					action="http://localhost:3333/usuario/cadastrar"
+					onSubmit={handleSubmitCadastro}
 					method="post"
 					className="flex flex-col w-full"
-					onSubmit={formik.handleSubmit}
 				>
 					<HeaderForm
 						title="Cadastre-se no Apito Final"
@@ -108,6 +167,7 @@ export const Cadastrar = () => {
 							placeholder="Nome"
 							onChange={formik.handleChange}
 							value={formik.values.nome}
+							required
 							onBlur={formik.handleBlur}
 							className={`px-2.5 password py-3.5 rounded-inputLogin bg-input border-inputBorder border-solid ${borda}`}
 						/>
@@ -132,6 +192,7 @@ export const Cadastrar = () => {
 							onChange={formik.handleChange}
 							value={formik.values.email}
 							onBlur={formik.handleBlur}
+							required
 							className={`px-2.5 password py-3.5 rounded-inputLogin bg-input border-inputBorder border-solid ${borda1}`}
 						/>
 						{formik.touched.email && formik.errors.email ? (
@@ -157,6 +218,8 @@ export const Cadastrar = () => {
 									onChange={formik.handleChange}
 									value={formik.values.password}
 									onBlur={formik.handleBlur}
+									required
+									minLength={6}
 									className={`px-2.5 password py-3.5 rounded-inputLogin bg-input border-inputBorder border-solid ${borda2}`}
 								/>
 								{show ? (
@@ -189,12 +252,14 @@ export const Cadastrar = () => {
 							<Inputi className="flex flex-wrap items-center">
 								<input
 									type={tipo2}
-									name="confirmPassword"
+									name="senha"
 									id="confirmPassword"
 									placeholder="Confirmar Senha"
 									onChange={formik.handleChange}
-									value={formik.values.confirmPassword}
+									value={formik.values.senha}
 									onBlur={formik.handleBlur}
+									required
+									minLength={6}
 									className={`px-2.5 password py-3.5 rounded-inputLogin bg-input border-inputBorder border-solid ${borda4}`}
 								/>
 								{show2 ? (
@@ -210,15 +275,27 @@ export const Cadastrar = () => {
 								)}
 							</Inputi>
 						</div>
-						{formik.touched.confirmPassword &&
-						formik.errors.confirmPassword ? (
+						{formik.touched.senha && formik.errors.senha ? (
 							<p className="text-red-500 font-sans text-base">
-								{formik.errors.confirmPassword}
+								{formik.errors.senha}
 							</p>
 						) : null}
 					</div>
-					<button className="bg-verde-claro text-white mt-6 mb-3 rounded-inputLogin py-2.5 text-base font-sans font-semibold ">
-						Cadastre-se
+					<button
+						type="submit"
+						disabled={isDisableButton()}
+						className={` text-white mt-6 mb-3 rounded-inputLogin py-2.5 text-base font-sans font-semibold ${disable}`}
+					>
+						{loading ? (
+							<div className="h-6 flex justify-center items-center">
+								<CircleNotch
+									size={30}
+									className="animate-spin"
+								/>
+							</div>
+						) : (
+							"Cadastre-se"
+						)}
 					</button>
 				</form>
 			</section>

@@ -9,22 +9,25 @@ import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { api } from "../../server/api";
+import { CircleNotch } from "phosphor-react";
+import Swal from "sweetalert2";
 
 export const Login = () => {
 	const SinginSchema = Yup.object().shape({
 		email: Yup.string()
 			.email("Insira um e-mail válido")
 			.required("O e-mail é obrigatório"),
-		password: Yup.string()
+		senha: Yup.string()
 			.min(6, "A senha deve ter no mínimo 6 caracteres")
 			.required("A senha é obrigatória"),
 	});
 	const formik = useFormik({
 		initialValues: {
 			email: "",
-			password: "",
+			senha: "",
 		},
 		validationSchema: SinginSchema,
 		onSubmit: (values) => {
@@ -39,10 +42,10 @@ export const Login = () => {
 	}
 	let borda2 = "border-borderInput";
 	let border3 = "border-borderInput";
-	if (formik.errors.password && formik.values.password != "") {
+	if (formik.errors.senha && formik.values.senha != "") {
 		borda2 = "border-red-500";
 		border3 = "border-red-500";
-	} else if (formik.values.password != "") {
+	} else if (formik.values.senha != "") {
 		borda2 = "border-green-500";
 		border3 = "border-green-500";
 	}
@@ -53,6 +56,58 @@ export const Login = () => {
 		setShow(!show);
 		setTipo(show ? "password" : "text");
 	};
+
+	let disable = "bg-buttonCard";
+	const isDisableButton = () => {
+		if (
+			formik.values.email == "" ||
+			formik.values.senha == "" ||
+			!formik.isValid
+		) {
+			disable = "bg-buttonCard";
+			return true;
+		} else {
+			disable = "bg-verde-claro";
+			return false;
+		}
+	};
+
+	const [loading, setLoading] = useState(false);
+	const handleSubmit = (e: FormEvent) => {
+		e.preventDefault();
+		setLoading(true);
+		const Toast = Swal.mixin({
+			toast: true,
+			position: "top-end",
+			showConfirmButton: false,
+			timer: 2000,
+			timerProgressBar: true,
+			didOpen: (toast) => {
+				toast.addEventListener("mouseenter", Swal.stopTimer);
+				toast.addEventListener("mouseleave", Swal.resumeTimer);
+			},
+		});
+		setTimeout(() => {
+			api.post("/usuario/login", {
+				email: formik.values.email,
+				senha: formik.values.senha,
+			})
+				.then((res) => {
+					Toast.fire({
+						icon: "success",
+						title: `${res.data.message}`,
+					});
+				})
+				.catch((err) => {
+					Toast.fire({
+						icon: "error",
+						title: `${err.response.data.message}`,
+					});
+				});
+			setLoading(false);
+		}, 2000);
+	};
+
 	return (
 		<LoginContainer className="flex flex-row">
 			<section className="flex flex-col px-8 w-1/2 items-start">
@@ -60,8 +115,7 @@ export const Login = () => {
 					<HeaderLogo />
 				</Link>
 				<form
-					action=""
-					onSubmit={formik.handleSubmit}
+					onSubmit={handleSubmit}
 					method="post"
 					className="flex flex-col w-full"
 				>
@@ -105,10 +159,10 @@ export const Login = () => {
 							<Inputi className="flex flex-wrap items-center">
 								<input
 									type={tipo}
-									name="password"
+									name="senha"
 									id="password"
 									placeholder="Senha"
-									value={formik.values.password}
+									value={formik.values.senha}
 									onChange={formik.handleChange}
 									onBlur={formik.handleBlur}
 									className={`px-2.5 password py-3.5 rounded-inputLogin bg-input border-inputBorder border-solid ${borda2}`}
@@ -126,20 +180,35 @@ export const Login = () => {
 								)}
 							</Inputi>
 							<p>
-								{formik.errors.password &&
-								formik.touched.password ? (
+								{formik.errors.senha && formik.touched.senha ? (
 									<span className="text-red-500 text-base font-sans">
-										{formik.errors.password}
+										{formik.errors.senha}
 									</span>
 								) : null}
 							</p>
 						</div>
 					</div>
-					<p className="text-verde-claro font-sans font-semibold text-right mt-7 text-base">
+					<Link
+						to={"/recuperarSenha"}
+						className="text-verde-claro font-sans font-semibold text-right mt-7 text-base"
+					>
 						Esqueceu a senha?
-					</p>
-					<button className="bg-verde-claro text-white mt-6 rounded-inputLogin py-2.5 text-base font-sans font-semibold ">
-						Entrar
+					</Link>
+					<button
+						type="submit"
+						disabled={isDisableButton()}
+						className={`${disable} text-white mt-6 rounded-inputLogin py-2.5 text-base font-sans font-semibold `}
+					>
+						{loading ? (
+							<div className="h-6 flex justify-center items-center">
+								<CircleNotch
+									size={30}
+									className="animate-spin"
+								/>
+							</div>
+						) : (
+							"Entrar"
+						)}
 					</button>
 					<p className="mt-6 font-sans font-semibold text-base text-labelLogin">
 						Ainda não tem uma conta?{" "}

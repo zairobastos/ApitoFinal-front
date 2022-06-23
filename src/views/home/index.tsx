@@ -11,7 +11,7 @@ export const PaginaInicial = () => {
 	return (
 		<div>
 			<Menur ativo="ativo" />
-			<section className="flex flex-row flex-wrap px-10 mt-16 gap-7 mb-4">
+			<section className="flex flex-row flex-wrap px-10 mt-32 gap-7 mb-4">
 				<aside className="flex flex-col w-1/5 border-2 border-solid border-borderForm shadow-menu rounded-xl py-8 px-5 h-full">
 					<h2 className="font-home font-black text-xl text-navMenuAtivo mb-10">
 						Partidas Recentes

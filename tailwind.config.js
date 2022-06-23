@@ -43,6 +43,7 @@ module.exports = {
 				fontCard: "rgba(2, 9, 5, 0.8)",
 				borderForm: "#f3f4f7",
 				buttonCard: "#018D30",
+				backgroundRecuperar: "#F9F9F9",
 			},
 			lineHeight: {
 				12: "4.90437rem",
