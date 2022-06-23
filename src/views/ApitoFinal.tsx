@@ -6,6 +6,7 @@ import imgFooterServices from "../assets/images/footerServices.svg"
 import { CardServices } from "../components/cardApitoFinal/CardServices"
 import { CaretCircleDown, CaretCircleUp } from "phosphor-react"
 import { Link } from "react-scroll"
+import { Index as Head } from "../components/headerIndex/Index"
 
 export function ApitoFinal(){
 
@@ -44,9 +45,10 @@ export function ApitoFinal(){
                     flex flex-col flex-start items-center gap-14"
             >
                 <div className="pt-1">
-                    <Link to="index" smooth={true} duration={1000}>
+                    <Head up='index'></Head>
+                    {/*<Link to="index" smooth={true} duration={1000}>
                         <CaretCircleUp className="id=icon-top hover:cursor-pointer" size={56} color="#F4F0F0" />
-                    </Link>
+                    </Link>*/}
                 </div>
                 <span 
                     id="titulo-sessao"

@@ -2,6 +2,7 @@ import { CaretCircleDown, CaretCircleUp } from "phosphor-react"
 import { Link } from "react-scroll"
 import img from "../assets/images/imgService.svg"
 import bg from "../../src/assets/images/group_p.svg"
+import { Index as Head } from "../components/headerIndex/Index";
 
 const sr = ScrollReveal({
     distance: "3.75rem",
@@ -21,10 +22,9 @@ export function Servicos(){
             <div className="flex flex-col items-center
                 bg-verde-claro"
             >
-                <div className="pt-1 ml-2 lg:ml-0">
-                    <Link to="apitofinal" smooth={true} duration={1000}>
-                        <CaretCircleUp id="circle_up" className="ml-2 lg:ml-0  hover:cursor-pointer" size={56} color="#F4F0F0" />
-                    </Link>
+                <div>
+                    <Head up="apitofinal" />
+                    
                 </div>
 
                 <div className="flex flex-col lg:flex-row gap-10 pt-10 pl-10">

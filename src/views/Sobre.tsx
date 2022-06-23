@@ -3,13 +3,15 @@ import { Link } from "react-scroll"
 import { BtnSocialMedias } from "../components/btnSocialMedias/BtnSocialMedias"
 import imgBg from "../assets/images/imgAbout.svg"
 
+import {Index as Header} from "../components/headerIndex/Index"
+
 
 export function Sobre(){
     return(
         <section id="sobre" className="w-full h-full lg:h-[40.6rem] bg-white relative">
             <div className="flex flex-col">
 
-                <div className="w-full flex flex-col-reverse relative lg:flex-row gap-0">
+                <div className="w-full flex flex-row relative gap-0">
                     <div className=" relative lg:pl-96 bg-right-top mt-[-1rem]">
                         <div className="pl-64">
                             <img src={imgBg} alt="" />
@@ -43,10 +45,13 @@ export function Sobre(){
                 </div>
 
                 <div className="absolute">
-                    <div className=" w-full lg:pl-96 lg:ml-64 ml-96 cursor-pointer">
-                        <Link  to="servicos" duration={1000} smooth={true}>
-                            <CaretCircleUp size={56} color="#ebe5e5" />
-                        </Link>
+                    
+                    <div 
+                        className=" 
+                            w-full 
+                            lg:ml-96 lg:pl-72"
+                    >
+                        <Header up="servicos" />
                     </div>
 
                     

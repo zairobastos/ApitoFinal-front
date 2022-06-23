@@ -31,7 +31,7 @@ export function NossaEquipe(){
             id="nossaequipe" 
             className="relative 
             w-full h-full
-            lg:h-[42.5rem]"
+            lg:h-[43rem]"
         >
             <div 
                 className=" flex

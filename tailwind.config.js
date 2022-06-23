@@ -65,10 +65,12 @@ module.exports = {
 			padding: "1rem",
 			screens: {
 				lg: "1124px",
-				xl: "1124px",
+				xl: "1200px",
 				"2xl": "1124px",
 			},
 		},
 	},
-	plugins: [],
+	plugins: [
+		require('@tailwindcss/forms'),
+	],
 };
