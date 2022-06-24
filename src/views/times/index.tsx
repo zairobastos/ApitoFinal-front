@@ -3,13 +3,11 @@ import { Cards } from "../../components/listarCadastrar/cards";
 import { ListarJogadoresTimes } from "../../components/listarJogadoresTimes";
 import { Menur } from "../../components/TelasHome/menu";
 import { Titulo } from "../../components/TelasHome/titulo";
-import RealMadrid from "../../assets/images/RealMadrid.svg";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { FormEvent, useState } from "react";
+import { useEffect, useState } from "react";
 import { api } from "../../server/api";
-import Swal from "sweetalert2";
 import { CircleNotch } from "phosphor-react";
 
 export const Times = () => {
@@ -61,44 +59,16 @@ export const Times = () => {
 	};
 
 	const [loading, setLoading] = useState(false);
-
-	function handleSubmit(e: FormEvent) {
-		e.preventDefault();
-		setLoading(true);
-		const Toast = Swal.mixin({
-			toast: true,
-			position: "top-end",
-			showConfirmButton: false,
-			timer: 3000,
-			timerProgressBar: true,
-			didOpen: (toast) => {
-				toast.addEventListener("mouseenter", Swal.stopTimer);
-				toast.addEventListener("mouseleave", Swal.resumeTimer);
-			},
-		});
-		setTimeout(() => {
-			api.post("times/cadastrar", {
-				nome: formik.values.nome,
-				abreviacao: formik.values.abreviacao,
-				escudo: formik.values.escudo.replace("C:\\fakepath\\", ""),
+	const [times, setTimes] = useState([]);
+	useEffect(() => {
+		api.get("/times/buscar/328790c5-5819-49d6-a3ff-7c7aaa4a6da2")
+			.then((res) => {
+				setTimes(res.data);
 			})
-				.then((res) => {
-					Toast.fire({
-						icon: "success",
-						title: `${res.data.message}`,
-					});
-					console.log(res.data);
-				})
-				.catch((err) => {
-					Toast.fire({
-						icon: "error",
-						title: `${err.response.data.message}`,
-					});
-					console.error(err);
-				});
-			setLoading(false);
-		}, 2000);
-	}
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
 	return (
 		<div>
 			<Menur ativo2="ativo" />
@@ -109,29 +79,21 @@ export const Times = () => {
 				/>
 				<ListarCadastrar>
 					<Cards>
-						<ListarJogadoresTimes
-							foto={RealMadrid}
-							nome="Real Madrid"
-						/>
-						<ListarJogadoresTimes
-							foto={RealMadrid}
-							nome="Juventus"
-						/>
-						<ListarJogadoresTimes
-							foto={RealMadrid}
-							nome="Barcelona"
-						/>
-						<ListarJogadoresTimes
-							foto={RealMadrid}
-							nome="Liverpool"
-						/>
+						{times.map((time: any) => {
+							return (
+								<ListarJogadoresTimes
+									foto={time.escudo}
+									nome={time.nome}
+								/>
+							);
+						})}
 					</Cards>
 					<div className="flex flex-col w-1/4 border-2 border-solid border-borderForm shadow-menu rounded-xl pt-8 px-5">
 						<h2 className="font-home font-black text-xl text-navMenuAtivo mb-10">
 							Novo Time
 						</h2>
 						<form
-							onSubmit={handleSubmit}
+							action="http://localhost:3333/times/cadastrar"
 							method="post"
 							className="flex flex-col flex-wrap gap-8"
 							encType="multipart/form-data"
