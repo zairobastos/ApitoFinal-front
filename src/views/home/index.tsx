@@ -6,6 +6,7 @@ import CeltaDeVigo from "../../assets/images/CeltaDeVigo.svg";
 import { Placar } from "../../components/placar";
 import { ListaCampeonatos } from "../../components/listaCampeonatos";
 import Brasileirao from "../../assets/images/Brasileirao.png";
+import {VerTodosBtn} from "../../components/verTodosBtn/Index";
 
 export const PaginaInicial = () => {
 	return (
@@ -72,14 +73,18 @@ export const PaginaInicial = () => {
 						<img
 							src={comecarCampeonato}
 							alt="Começar Campeonato"
-							className="w-full"
+							className="w-full h-52"
 						/>
 					</figure>
 					<main className="flex flex-col flex-wrap mt-9">
-						<header className="mb-5">
+						<header className="mb-5 flex flex-row gap-96">
 							<h2 className="text-xl font-home font-bold">
 								Últimos Campeonatos
 							</h2>
+							<VerTodosBtn 
+								route="/campeonato"
+								classNome="font-padrao text-lg font-bold text-verde-claro"
+							/>
 						</header>
 
 						<ListaCampeonatos

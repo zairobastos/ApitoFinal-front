@@ -126,7 +126,7 @@ export const Login = () => {
 					<div className="flex flex-col flex-wrap gap-1.5">
 						<label
 							htmlFor="email"
-							className="text-base font-sans font-semibold leading-4 text-labelLogin"
+							className="text-base font-padrao font-semibold leading-4 text-labelLogin"
 						>
 							Email
 						</label>
@@ -151,7 +151,7 @@ export const Login = () => {
 					<div className="flex flex-col flex-wrap gap-1.5 mt-5">
 						<label
 							htmlFor="password"
-							className="text-base font-sans font-semibold leading-4 text-labelLogin"
+							className="text-base font-padrao font-semibold leading-4 text-labelLogin"
 						>
 							Senha
 						</label>
@@ -190,27 +190,33 @@ export const Login = () => {
 					</div>
 					<Link
 						to={"/recuperarSenha"}
-						className="text-verde-claro font-sans font-semibold text-right mt-7 text-base"
+						className="text-verde-claro font-padrao font-semibold text-right mt-7 text-base"
 					>
 						Esqueceu a senha?
 					</Link>
-					<button
-						type="submit"
-						disabled={isDisableButton()}
+					<Link 
+						to={"/paginaInicial"}
 						className={`${disable} text-white mt-6 rounded-inputLogin py-2.5 text-base font-sans font-semibold `}
+
 					>
-						{loading ? (
-							<div className="h-6 flex justify-center items-center">
-								<CircleNotch
-									size={30}
-									className="animate-spin"
-								/>
-							</div>
-						) : (
-							"Entrar"
-						)}
-					</button>
-					<p className="mt-6 font-sans font-semibold text-base text-labelLogin">
+						<button
+							type="submit"
+							disabled={isDisableButton()}
+						>
+							{loading ? (
+								<div className="h-6 flex justify-center items-center">
+									<CircleNotch
+										size={30}
+										className="animate-spin"
+									/>
+								</div>
+							) : (
+								"Entrar"
+							)}
+						
+						</button>
+					</Link>
+					<p className="mt-6 font-padrao font-semibold text-base text-labelLogin">
 						Ainda não tem uma conta?{" "}
 						<Link to={"/cadastrar"} className="text-verde-claro">
 							Criar Conta

@@ -156,7 +156,7 @@ export const Cadastrar = () => {
 					<div className="flex flex-col flex-wrap gap-1.5">
 						<label
 							htmlFor="nome"
-							className="text-base font-sans font-semibold leading-4 text-labelLogin"
+							className="text-base font-padrao font-semibold leading-4 text-labelLogin"
 						>
 							Nome
 						</label>
@@ -172,7 +172,7 @@ export const Cadastrar = () => {
 							className={`px-2.5 password py-3.5 rounded-inputLogin bg-input border-inputBorder border-solid ${borda}`}
 						/>
 						{formik.touched.nome && formik.errors.nome ? (
-							<p className="text-red-500 font-sans text-base">
+							<p className="text-red-500 font-padrao text-base">
 								{formik.errors.nome}
 							</p>
 						) : null}
@@ -180,7 +180,7 @@ export const Cadastrar = () => {
 					<div className="flex flex-col flex-wrap gap-1.5 mt-7">
 						<label
 							htmlFor="email"
-							className="text-base font-sans font-semibold leading-4 text-labelLogin"
+							className="text-base font-padrao font-semibold leading-4 text-labelLogin"
 						>
 							E-mail
 						</label>
@@ -196,7 +196,7 @@ export const Cadastrar = () => {
 							className={`px-2.5 password py-3.5 rounded-inputLogin bg-input border-inputBorder border-solid ${borda1}`}
 						/>
 						{formik.touched.email && formik.errors.email ? (
-							<p className="text-red-500 font-sans text-base">
+							<p className="text-red-500 font-padrao text-base">
 								{formik.errors.email}
 							</p>
 						) : null}
@@ -204,7 +204,7 @@ export const Cadastrar = () => {
 					<div className="flex flex-col flex-wrap gap-1.5 mt-7">
 						<label
 							htmlFor="password"
-							className="text-base font-sans font-semibold leading-4 text-labelLogin"
+							className="text-base font-padrao font-semibold leading-4 text-labelLogin"
 						>
 							Senha
 						</label>
@@ -236,7 +236,7 @@ export const Cadastrar = () => {
 							</Inputi>
 						</div>
 						{formik.touched.password && formik.errors.password ? (
-							<p className="text-red-500 font-sans text-base">
+							<p className="text-red-500 font-padrao text-base">
 								{formik.errors.password}
 							</p>
 						) : null}
@@ -244,7 +244,7 @@ export const Cadastrar = () => {
 					<div className="flex flex-col flex-wrap gap-1.5 mt-7">
 						<label
 							htmlFor="confirmPassword"
-							className="text-base font-sans font-semibold leading-4 text-labelLogin"
+							className="text-base font-padrao font-semibold leading-4 text-labelLogin"
 						>
 							Confirmar Senha
 						</label>
@@ -276,7 +276,7 @@ export const Cadastrar = () => {
 							</Inputi>
 						</div>
 						{formik.touched.senha && formik.errors.senha ? (
-							<p className="text-red-500 font-sans text-base">
+							<p className="text-red-500 font-padrao text-base">
 								{formik.errors.senha}
 							</p>
 						) : null}
@@ -284,7 +284,7 @@ export const Cadastrar = () => {
 					<button
 						type="submit"
 						disabled={isDisableButton()}
-						className={` text-white mt-6 mb-3 rounded-inputLogin py-2.5 text-base font-sans font-semibold ${disable}`}
+						className={` text-white mt-6 mb-3 rounded-inputLogin py-2.5 text-base font-padrao font-semibold ${disable}`}
 					>
 						{loading ? (
 							<div className="h-6 flex justify-center items-center">
