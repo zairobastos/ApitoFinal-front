@@ -82,6 +82,7 @@ export const Times = () => {
 						{times.map((time: any) => {
 							return (
 								<ListarJogadoresTimes
+									key={time.id}
 									foto={time.escudo}
 									nome={time.nome}
 								/>
@@ -168,6 +169,12 @@ export const Times = () => {
 										className={`px-2.5 password py-3.5 rounded-inputLogin bg-input border-inputBorder border-solid w-full`}
 									/>
 								</div>
+								<input
+									type="hidden"
+									name="userId"
+									id="userId"
+									value="328790c5-5819-49d6-a3ff-7c7aaa4a6da2"
+								/>
 								<button
 									type="submit"
 									disabled={isDisableButton()}
