@@ -37,11 +37,13 @@ export const SubMenu = ({ ativo1, ativo2, ativo3, ativo }: ativos) => {
 							<img src={Tabela} alt="Icone de tabela" />
 						</li>
 					</Link>
-					<li
-						className={`w-11 flex flex-wrap justify-center h-full items-center ${ativo2}`}
-					>
-						<img src={Campo} alt="Icone de campo" />
-					</li>
+					<Link to="/partidasCampeonato">
+						<li
+							className={`w-11 flex flex-wrap justify-center h-full items-center ${ativo2}`}
+						>
+							<img src={Campo} alt="Icone de campo" />
+						</li>
+					</Link>
 					<li
 						className={`w-11 flex flex-wrap justify-center h-full items-center ${ativo3}`}
 					>

@@ -11,6 +11,7 @@ import { Times } from "../views/times";
 import { RecuperarSenha } from "../views/recuperarSenha";
 import { DetalhesCampeonato } from "../views/detalhesCampeonato";
 import { Tabela } from "../views/tabela";
+import { PartidasCampeonato } from "../views/partidasCampeonato";
 
 const Router = () => {
 	return (
@@ -31,6 +32,10 @@ const Router = () => {
 					element={<DetalhesCampeonato />}
 				/>
 				<Route path="/tabelaCampeonato" element={<Tabela />}></Route>
+				<Route
+					path="/partidasCampeonato"
+					element={<PartidasCampeonato />}
+				/>
 			</Routes>
 		</BrowserRouter>
 	);
