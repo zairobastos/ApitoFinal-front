@@ -1,39 +1,14 @@
 import { Menur } from "../../components/TelasHome/menu";
 import { SubMenu } from "../../components/subMenu";
-import Calendario from "../../assets/images/calendar.svg";
+import { NomeCampeonato } from "../../components/NomeCampeonato";
 
 export const DetalhesCampeonato = () => {
 	return (
 		<div>
 			<Menur ativo1="ativo" />
-			<SubMenu />
+			<SubMenu ativo="ativo" />
 			<div className="absolute mt-40 px-10 w-full flex flex-col gap-14">
-				<div className="flex h-32">
-					<figure className="flex items-center gap-2">
-						<img
-							src="images/campeonatos/premier-league-2-logo 2.svg"
-							alt=""
-						/>
-						<div className="flex flex-col text-preto justify-between items-center h-full">
-							<h1 className="text-6xl font-bold mt-8 font-padrao">
-								Premier League
-							</h1>
-							<figure className="flex gap-8">
-								<div className="flex gap-1 items-center">
-									<img
-										src={Calendario}
-										alt="Data de Início"
-									/>
-									<p>04/07/2022</p>
-								</div>
-								<div className="flex gap-1 items-center">
-									<img src={Calendario} alt="Data de Fim" />
-									<p>04/07/2022</p>
-								</div>
-							</figure>
-						</div>
-					</figure>
-				</div>
+				<NomeCampeonato />
 				<main className="flex flex-col gap-7 z-0">
 					<div className="flex flex-col">
 						<h3 className="uppercase text-buttonCard font-padrao font-black text-lg">
