@@ -9,6 +9,7 @@ import { Jogadores } from "../views/jogadores";
 import { Login } from "../views/login";
 import { Times } from "../views/times";
 import { RecuperarSenha } from "../views/recuperarSenha";
+import { PaginaEditarUsuario } from "../views/editarUsuario/Index";
 
 const Router = () => {
 	return (
@@ -24,6 +25,7 @@ const Router = () => {
 				<Route path="/times" element={<Times />} />
 				<Route path="/jogadores" element={<Jogadores />} />
 				<Route path="/recuperarSenha" element={<RecuperarSenha />} />
+				<Route path="/editarUsuario" element={<PaginaEditarUsuario/>} />
 			</Routes>
 		</BrowserRouter>
 	);

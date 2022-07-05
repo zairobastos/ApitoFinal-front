@@ -73,12 +73,59 @@ export const Menur = ({ ativo, ativo1, ativo2, ativo3 }: ativos) => {
 					</div>
 				</div>
 				{janela && (
-					<div className="flex bg-white flex-col flex-wrap z-10 w-36 fixed right-0 mr-10 mt-24 rounded-xl p-2 border-2 border-solid border-borderForm shadow-menu ">
-						<ul className="flex flex-col justify-center items-center text-base font-home font-bold">
-							<li>Minha Conta</li>
-							<li className="flex flex-row flex-wrap items-center gap-2 text-red-500">
-								Sair <FiLogOut />
+					<div className="flex bg-black flex-col flex-wrap z-10 w-80 h-96 fixed right-0 mr-10 mt-24 rounded-xl p-2 border-2 border-solid border-borderForm shadow-menu ">
+						<ul 
+							className="
+								flex flex-col 
+								justify-center items-center 
+								text-lg font-home font-bold
+								py-7 gap-2
+								">
+							<li>
+								<FaUserCircle size={100} color="#fcfcfc" />
 							</li>
+							<li className="text-white flex flex-col items-center">
+								<span>Nome</span>
+								<span>Email@gmail.com</span>
+							</li>
+							<li className="flex flex-col w-full items-center gap-3 py-3">
+								<Link to={"/editarUsuario"}>
+									<button
+										className="rounded-3xl
+										bg-white
+										w-44 h-10
+										font-bold
+										text-lg"
+									>
+										Editar Perfil
+										{/**Linkar */}
+									</button>
+								</Link>
+								<button
+									className="rounded-3xl
+									border-white
+									text-white
+									border-2
+									w-44 h-10
+									font-bold
+									text-lg"
+								>
+									Excluir Perfil
+									{/**Linkar */}
+								</button>
+							</li>
+							<Link to={"/"}>
+								<li className="
+									flex flex-row flex-wrap 
+									items-center gap-2 
+									text-red-600
+									pl-48"
+								>
+									
+										Sair <FiLogOut />
+								</li>
+							</Link>
+							
 						</ul>
 					</div>
 				)}
