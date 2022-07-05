@@ -9,6 +9,7 @@ import { Jogadores } from "../views/jogadores";
 import { Login } from "../views/login";
 import { Times } from "../views/times";
 import { RecuperarSenha } from "../views/recuperarSenha";
+import { DetalhesCampeonato } from "../views/detalhesCampeonato";
 
 const Router = () => {
 	return (
@@ -24,6 +25,10 @@ const Router = () => {
 				<Route path="/times" element={<Times />} />
 				<Route path="/jogadores" element={<Jogadores />} />
 				<Route path="/recuperarSenha" element={<RecuperarSenha />} />
+				<Route
+					path="/detalhesCampeonato"
+					element={<DetalhesCampeonato />}
+				/>
 			</Routes>
 		</BrowserRouter>
 	);

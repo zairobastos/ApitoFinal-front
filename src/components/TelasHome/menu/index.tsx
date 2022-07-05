@@ -22,7 +22,7 @@ export const Menur = ({ ativo, ativo1, ativo2, ativo3 }: ativos) => {
 	};
 	return (
 		<>
-			<header className="flex bg-white top-0 w-full fixed flex-row flex-wrap justify-between h-20 shadow-menu  px-10 border-b border-solid border-borderMenu">
+			<header className="flex bg-white z-10 top-0 w-full fixed flex-row flex-wrap justify-between h-20 shadow-menu  px-10 border-b border-solid border-borderMenu">
 				<nav className="flex flex-wrap flex-row items-center gap-x-12">
 					<figure>
 						<img src={logo} alt="logo" />
