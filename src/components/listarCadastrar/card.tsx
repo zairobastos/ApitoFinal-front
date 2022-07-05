@@ -1,6 +1,7 @@
 import { Figure } from "../../views/campeonatos/style";
 import calendar from "../../assets/images/calendar.svg";
 import prosseguir from "../../assets/images/Prosseguir.svg";
+import { Link } from "react-router-dom";
 
 type dados = {
 	logo: string;
@@ -40,15 +41,20 @@ export const Card = ({
 						</p>
 					</figure>
 				</div>
-				<figure className="flex flex-row flex-wrap items-center h-full mb-7 justify-end mt-7 pr-7 gap-1">
-					<p className="text-verde-claro font-home h-full  flex items-center font-bold text-base">
-						Ver Detalhes
-					</p>
-					<img
-						src={prosseguir}
-						alt="seta de prosseguir"
-						className=""
-					/>
+				<figure className="mb-7 mt-7 pr-7">
+					<Link
+						to="/detalhesCampeonato"
+						className="flex flex-row flex-wrap items-center h-full justify-end gap-1"
+					>
+						<p className="text-verde-claro font-home h-full  flex items-center font-bold text-base">
+							Ver Detalhes
+						</p>
+						<img
+							src={prosseguir}
+							alt="seta de prosseguir"
+							className=""
+						/>
+					</Link>
 				</figure>
 			</div>
 		</div>

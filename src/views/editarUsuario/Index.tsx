@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Menur } from "../../components/TelasHome/menu";
 import imgAvatar from "../../assets/images/imgGitLet.svg"
 import { Plus } from "phosphor-react";
 
-
 export const PaginaEditarUsuario = () => {
+
+    const [selectedFile, setSelectedFile] = useState()
+    const [preview, setPreview] = useState('')
+
+    useEffect(() => {
+        if (!selectedFile) {
+            setPreview(imgAvatar)
+            return
+        }
+
+        const objectUrl = URL.createObjectURL(selectedFile)
+        setPreview(objectUrl)
+
+        return () => URL.revokeObjectURL(objectUrl)
+    }, [selectedFile])
+
+    const onSelectFile = (e: any) => {
+        if (!e.target.files || e.target.files.length === 0) {
+            setSelectedFile(undefined)
+            return
+        }
+
+        setSelectedFile(e.target.files[0])
+    }
 
     function uploadFile(){
         document.getElementById('selectedFile')?.click()
@@ -47,8 +70,8 @@ export const PaginaEditarUsuario = () => {
                         "
                     >
 
-                        <img className="scale-50 mt-[-5rem]" src={imgAvatar} alt="" />
-
+                        <img className="scale-50 mt-[-5rem] rounded-full w-[19.9rem] h-[19.1rem]" src={preview} alt="" />
+                        
                         <div className="ml-52 mt-[-7.7rem] z-10">
                             <button
                                 className="
@@ -60,8 +83,13 @@ export const PaginaEditarUsuario = () => {
                             >
                                 <Plus size={28} color="#fcfcfc" />
                             </button>
-                            <input id="selectedFile" type="file" style={{display:"none"}} accept="image/png, image/jpg"/>
+                            <input id="selectedFile" name="image" type="file" style={{display:"none"}} accept="image/png, image/jpg"
+                                onChange={onSelectFile}
+                            />
+
                         </div>
+
+                        
 
                         <div className="flex flex-col gap-0">
 

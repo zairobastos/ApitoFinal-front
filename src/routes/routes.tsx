@@ -10,6 +10,9 @@ import { Login } from "../views/login";
 import { Times } from "../views/times";
 import { RecuperarSenha } from "../views/recuperarSenha";
 import { PaginaEditarUsuario } from "../views/editarUsuario/Index";
+import { DetalhesCampeonato } from "../views/detalhesCampeonato";
+import { Tabela } from "../views/tabela";
+import { PartidasCampeonato } from "../views/partidasCampeonato";
 
 const Router = () => {
 	return (
@@ -26,6 +29,15 @@ const Router = () => {
 				<Route path="/jogadores" element={<Jogadores />} />
 				<Route path="/recuperarSenha" element={<RecuperarSenha />} />
 				<Route path="/editarUsuario" element={<PaginaEditarUsuario/>} />
+				<Route
+					path="/detalhesCampeonato"
+					element={<DetalhesCampeonato />}
+				/>
+				<Route path="/tabelaCampeonato" element={<Tabela />}></Route>
+				<Route
+					path="/partidasCampeonato"
+					element={<PartidasCampeonato />}
+				/>
 			</Routes>
 		</BrowserRouter>
 	);
