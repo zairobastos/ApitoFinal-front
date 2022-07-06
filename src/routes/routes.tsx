@@ -13,6 +13,7 @@ import { PaginaEditarUsuario } from "../views/editarUsuario/Index";
 import { DetalhesCampeonato } from "../views/detalhesCampeonato";
 import { Tabela } from "../views/tabela";
 import { PartidasCampeonato } from "../views/partidasCampeonato";
+import { CampeonatoEmChaves } from "../views/chavesCampeonato/Index";
 
 const Router = () => {
 	return (
@@ -34,6 +35,7 @@ const Router = () => {
 					element={<DetalhesCampeonato />}
 				/>
 				<Route path="/tabelaCampeonato" element={<Tabela />}></Route>
+				<Route path="/chavesCampeonato" element={<CampeonatoEmChaves />}></Route>
 				<Route
 					path="/partidasCampeonato"
 					element={<PartidasCampeonato />}

@@ -5,4 +5,8 @@ export const Lista = styled.ul`
 		background-color: #00c041;
 		color: #fff;
 	}
+	.desativo{
+		background-color: #020905;
+		color: #fff;
+	}
 `;

@@ -3,6 +3,7 @@ import Descricao from "../../assets/images/descricao.svg";
 import Tabela from "../../assets/images/Tabela.svg";
 import Campo from "../../assets/images/campo.svg";
 import Player from "../../assets/images/Player.svg";
+import Chaves from "../../assets/images/Chaves.svg"
 import { Link } from "react-router-dom";
 import { Lista } from "./style";
 
@@ -11,9 +12,10 @@ type ativos = {
 	ativo1?: string;
 	ativo2?: string;
 	ativo3?: string;
+	ativo4?: string;
 };
 
-export const SubMenu = ({ ativo1, ativo2, ativo3, ativo }: ativos) => {
+export const SubMenu = ({ ativo1, ativo2, ativo3, ativo, ativo4 }: ativos) => {
 	return (
 		<nav className="flex z-10 bg-preto mt-20 fixed w-full justify-between items-center text-white">
 			<div className="h-14 flex flex-wrap items-center">
@@ -35,6 +37,13 @@ export const SubMenu = ({ ativo1, ativo2, ativo3, ativo }: ativos) => {
 							className={`w-11 flex flex-wrap justify-center h-full items-center ${ativo1}`}
 						>
 							<img src={Tabela} alt="Icone de tabela" />
+						</li>
+					</Link>
+					<Link to="/chavesCampeonato">
+						<li
+							className={`w-11 flex flex-wrap justify-center h-full items-center ${ativo4}`}
+						>
+							<img src={Chaves} alt="Icone de Chaves" />
 						</li>
 					</Link>
 					<Link to="/partidasCampeonato">

@@ -7,6 +7,7 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { FiLogOut } from "react-icons/fi";
 
 import { useState } from "react";
+import { Btn } from "../../btnPadrao/Index";
 
 type ativos = {
 	ativo?: string;
@@ -89,30 +90,18 @@ export const Menur = ({ ativo, ativo1, ativo2, ativo3 }: ativos) => {
 								<span>Email@gmail.com</span>
 							</li>
 							<li className="flex flex-col w-full items-center gap-3 py-3">
-								<Link to={"/editarUsuario"}>
-									<button
-										className="rounded-3xl
-										bg-white
-										w-44 h-10
-										font-bold
-										text-lg"
-									>
-										Editar Perfil
-										{/**Linkar */}
-									</button>
-								</Link>
-								<button
-									className="rounded-3xl
+								<Btn link="/editarUsuario" texto="Editar Usuário" classname="rounded-3xl
+									bg-white
+									w-44 h-10
+									font-bold
+									text-lg"/>
+								<Btn link="/editarUsuario" texto="Excluir Usuário" classname="rounded-3xl
 									border-white
 									text-white
 									border-2
 									w-44 h-10
 									font-bold
-									text-lg"
-								>
-									Excluir Perfil
-									{/**Linkar */}
-								</button>
+									text-lg" />
 							</li>
 							<Link to={"/"}>
 								<li className="
