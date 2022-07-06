@@ -1,21 +1,33 @@
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { Jogos } from "../../components/jogos";
+import { Linha } from "../../components/linhaTabela";
 import { NomeCampeonato } from "../../components/NomeCampeonato";
 import { SubMenu } from "../../components/subMenu";
 import { Menur } from "../../components/TelasHome/menu";
+import { useState } from "react";
 
 export const Tabela = () => {
+	const [rodada, setRodada] = useState(1);
+	const proximaRodada = () => {
+		setRodada(rodada + 1);
+	};
+	const anteriorRodada = () => {
+		if (rodada > 1) {
+			setRodada(rodada - 1);
+		}
+	};
 	return (
 		<div>
 			<Menur ativo1="ativo" />
-			<SubMenu ativo1="ativo" />
+			<SubMenu ativo1="ativo" titulo="Grupos e Tabelas" />
 			<div className="absolute mt-40 px-10 w-full flex flex-col gap-14">
 				<NomeCampeonato />
 				<main className="flex w-full h-full gap-8 mb-11">
-					<table className="flex flex-col w-3/5 justify-between gap-3">
+					<table className="flex flex-col w-3/5 gap-3">
 						<h2 className="font-padrao text-3xl text-black font-bold">
 							TABELA
 						</h2>
-						<div className="font-padrao text-lg font-semibold text-black">
+						<div className="font-padrao text-lg font-semibold text-black flex flex-col">
 							<thead className="flex w-full text-base border-t-2 border-borderTopTabela">
 								<tr className="flex w-full border-b-2 h-14 items-center border-borderTituloTabela justify-between">
 									<th className="w-1/5 text-left h-full flex items-center border-r-2 border-borderDireitaTimes">
@@ -32,132 +44,72 @@ export const Tabela = () => {
 								</tr>
 							</thead>
 							<tbody className="flex flex-col w-full mt-0">
-								<tr className="flex w-full justify-start items-center h-14 border-b border-borderTabela">
-									<td className="w-1/5 text-left border-r-2 border-borderDireitaTimes h-full flex items-center gap-2">
-										<span>1</span> Palmeiras
-									</td>
-									<td className="w-tabela text-center bg-bgTabela h-full flex items-center justify-center">
-										29
-									</td>
-									<td className="w-tabela text-center">15</td>
-									<td className="w-tabela text-center bg-bgTabela h-full flex items-center justify-center">
-										8
-									</td>
-									<td className="w-tabela text-center">5</td>
-									<td className="w-tabela text-center bg-bgTabela h-full flex items-center justify-center">
-										2
-									</td>
-									<td className="w-tabela text-center">27</td>
-									<td className="w-tabela text-center bg-bgTabela h-full flex items-center justify-center">
-										12
-									</td>
-									<td className="w-tabela text-center">15</td>
-								</tr>
-								<tr className="flex w-full justify-start items-center h-14 border-b border-borderTabela">
-									<td className="w-1/5 text-left border-r-2 border-borderDireitaTimes h-full flex items-center gap-2">
-										<span>2</span> Athletico-PR
-									</td>
-									<td className="w-tabela text-center bg-bgTabela h-full flex items-center justify-center">
-										27
-									</td>
-									<td className="w-tabela text-center">15</td>
-									<td className="w-tabela text-center bg-bgTabela h-full flex items-center justify-center">
-										3
-									</td>
-									<td className="w-tabela text-center">5</td>
-									<td className="w-tabela text-center bg-bgTabela h-full flex items-center justify-center">
-										4
-									</td>
-									<td className="w-tabela text-center">19</td>
-									<td className="w-tabela text-center bg-bgTabela h-full flex items-center justify-center">
-										15
-									</td>
-									<td className="w-tabela text-center">4</td>
-								</tr>
-								<tr className="flex w-full justify-start items-center h-14 border-b border-borderTabela">
-									<td className="w-1/5 text-left border-r-2 border-borderDireitaTimes h-full flex items-center gap-2">
-										<span>3</span> Atlético-MG
-									</td>
-									<td className="w-tabela text-center bg-bgTabela h-full flex items-center justify-center">
-										27
-									</td>
-									<td className="w-tabela text-center">15</td>
-									<td className="w-tabela text-center bg-bgTabela h-full flex items-center justify-center">
-										7
-									</td>
-									<td className="w-tabela text-center">5</td>
-									<td className="w-tabela text-center bg-bgTabela h-full flex items-center justify-center">
-										3
-									</td>
-									<td className="w-tabela text-center">17</td>
-									<td className="w-tabela text-center bg-bgTabela h-full flex items-center justify-center">
-										14
-									</td>
-									<td className="w-tabela text-center">3</td>
-								</tr>
-								<tr className="flex w-full justify-start items-center h-14 border-b border-borderTabela">
-									<td className="w-1/5 text-left border-r-2 border-borderDireitaTimes h-full flex items-center gap-2">
-										<span>4</span> Corinthans
-									</td>
-									<td className="w-tabela text-center bg-bgTabela h-full flex items-center justify-center">
-										26
-									</td>
-									<td className="w-tabela text-center">15</td>
-									<td className="w-tabela text-center bg-bgTabela h-full flex items-center justify-center">
-										7
-									</td>
-									<td className="w-tabela text-center">5</td>
-									<td className="w-tabela text-center bg-bgTabela h-full flex items-center justify-center">
-										3
-									</td>
-									<td className="w-tabela text-center">17</td>
-									<td className="w-tabela text-center bg-bgTabela h-full flex items-center justify-center">
-										14
-									</td>
-									<td className="w-tabela text-center">3</td>
-								</tr>
-								<tr className="flex w-full justify-start items-center h-14 border-b border-borderTabela">
-									<td className="w-1/5 text-left border-r-2 border-borderDireitaTimes h-full flex items-center gap-2">
-										<span>5</span> Internacional
-									</td>
-									<td className="w-tabela text-center bg-bgTabela h-full flex items-center justify-center">
-										25
-									</td>
-									<td className="w-tabela text-center">15</td>
-									<td className="w-tabela text-center bg-bgTabela h-full flex items-center justify-center">
-										6
-									</td>
-									<td className="w-tabela text-center">7</td>
-									<td className="w-tabela text-center bg-bgTabela h-full flex items-center justify-center">
-										2
-									</td>
-									<td className="w-tabela text-center">22</td>
-									<td className="w-tabela text-center bg-bgTabela h-full flex items-center justify-center">
-										15
-									</td>
-									<td className="w-tabela text-center">7</td>
-								</tr>
-								<tr className="flex w-full justify-start items-center h-14 border-b border-borderTabela">
-									<td className="w-1/5 text-left border-r-2 border-borderDireitaTimes h-full flex items-center gap-2">
-										<span>6</span> Fluminense
-									</td>
-									<td className="w-tabela text-center bg-bgTabela h-full flex items-center justify-center">
-										24
-									</td>
-									<td className="w-tabela text-center">15</td>
-									<td className="w-tabela text-center bg-bgTabela h-full flex items-center justify-center">
-										7
-									</td>
-									<td className="w-tabela text-center">3</td>
-									<td className="w-tabela text-center bg-bgTabela h-full flex items-center justify-center">
-										5
-									</td>
-									<td className="w-tabela text-center">20</td>
-									<td className="w-tabela text-center bg-bgTabela h-full flex items-center justify-center">
-										14
-									</td>
-									<td className="w-tabela text-center">6</td>
-								</tr>
+								<Linha
+									posicao="1"
+									time="Palmeiras"
+									pontos="29"
+									jogos="15"
+									vitorias="8"
+									empates="5"
+									derrotas="2"
+									golsPro="27"
+									golsContra="12"
+								/>
+								<Linha
+									posicao="2"
+									time="Athletico-PR"
+									pontos="27"
+									jogos="15"
+									vitorias="8"
+									empates="3"
+									derrotas="4"
+									golsPro="19"
+									golsContra="15"
+								/>
+								<Linha
+									posicao="3"
+									time="Atlético-MG"
+									pontos="27"
+									jogos="15"
+									vitorias="7"
+									empates="6"
+									derrotas="2"
+									golsPro="24"
+									golsContra="17"
+								/>
+								<Linha
+									posicao="4"
+									time="Corinthians"
+									pontos="26"
+									jogos="15"
+									vitorias="7"
+									empates="5"
+									derrotas="3"
+									golsPro="17"
+									golsContra="14"
+								/>
+								<Linha
+									posicao="5"
+									time="Internacional"
+									pontos="25"
+									jogos="15"
+									vitorias="6"
+									empates="7"
+									derrotas="2"
+									golsPro="22"
+									golsContra="15"
+								/>
+								<Linha
+									posicao="6"
+									time="Fluminense"
+									pontos="24"
+									jogos="15"
+									vitorias="7"
+									empates="3"
+									derrotas="5"
+									golsPro="20"
+									golsContra="16"
+								/>
 							</tbody>
 						</div>
 					</table>
@@ -167,153 +119,51 @@ export const Tabela = () => {
 						</h2>
 						<ul className="flex flex-col w-full">
 							<li className="flex justify-between items-center h-14 border-t-2 border-borderTopTabela border-b-2 border-borderTituloTabela">
-								<IoIosArrowBack className="text-2xl" />
+								<IoIosArrowBack
+									className="text-2xl cursor-pointer"
+									onClick={anteriorRodada}
+								/>
 								<p className="text-2xl font-bold font-padrao">
-									15ª RODADA
+									{rodada}ª RODADA
 								</p>
-								<IoIosArrowForward className="text-2xl" />
+								<IoIosArrowForward
+									className="text-2xl cursor-pointer"
+									onClick={proximaRodada}
+								/>
 							</li>
-							<li className="w-full h-28 flex flex-col border-b border-borderTabela py-3 gap-3 items-center">
-								<header>
-									<p className="font-padrao font-bold text-xs">
-										SÁB 02/07/2022{" "}
-										<span className="font-normal">
-											MARACANÃ{" "}
-										</span>
-										16:30
-									</p>
-								</header>
-								<main className="flex gap-4">
-									<figure className="flex gap-2 items-center">
-										<h3>FLU</h3>
-										<img
-											src="images/463debd5f273f60bf2bcee425f931223.png"
-											alt="Fluminense"
-											width={30}
-											height={30}
-										/>
-									</figure>
-									<div className="flex items-center gap-3">
-										<h2 className="font-sans font-bold text-xl">
-											4
-										</h2>
-										<p className="font-sans font-normal text-base">
-											x
-										</p>
-										<h2 className="font-sans font-bold text-xl">
-											0
-										</h2>
-									</div>
-									<figure className="flex gap-2 items-center">
-										<img
-											src="images/463debd5f273f60bf2bcee425f931223.png"
-											alt="Fluminense"
-											width={30}
-											height={30}
-										/>
-										<h3>FLU</h3>
-									</figure>
-								</main>
-								<footer>
-									<h2 className="text-xs font-sans text-buttonCard font-semibold">
-										VEJA COMO FOI
-									</h2>
-								</footer>
-							</li>
-							<li className="w-full h-28 flex flex-col border-b border-borderTabela py-3 gap-3 items-center">
-								<header>
-									<p className="font-padrao font-bold text-xs">
-										SÁB 02/07/2022{" "}
-										<span className="font-normal">
-											MARACANÃ{" "}
-										</span>
-										16:30
-									</p>
-								</header>
-								<main className="flex gap-4">
-									<figure className="flex gap-2 items-center">
-										<h3>FLU</h3>
-										<img
-											src="images/463debd5f273f60bf2bcee425f931223.png"
-											alt="Fluminense"
-											width={30}
-											height={30}
-										/>
-									</figure>
-									<div className="flex items-center gap-3">
-										<h2 className="font-sans font-bold text-xl">
-											4
-										</h2>
-										<p className="font-sans font-normal text-base">
-											x
-										</p>
-										<h2 className="font-sans font-bold text-xl">
-											0
-										</h2>
-									</div>
-									<figure className="flex gap-2 items-center">
-										<img
-											src="images/463debd5f273f60bf2bcee425f931223.png"
-											alt="Fluminense"
-											width={30}
-											height={30}
-										/>
-										<h3>FLU</h3>
-									</figure>
-								</main>
-								<footer>
-									<h2 className="text-xs font-sans text-buttonCard font-semibold">
-										VEJA COMO FOI
-									</h2>
-								</footer>
-							</li>
-							<li className="w-full h-28 flex flex-col border-b border-borderTabela py-3 gap-3 items-center">
-								<header>
-									<p className="font-padrao font-bold text-xs">
-										SÁB 02/07/2022{" "}
-										<span className="font-normal">
-											MARACANÃ{" "}
-										</span>
-										16:30
-									</p>
-								</header>
-								<main className="flex gap-4">
-									<figure className="flex gap-2 items-center">
-										<h3>FLU</h3>
-										<img
-											src="images/463debd5f273f60bf2bcee425f931223.png"
-											alt="Fluminense"
-											width={30}
-											height={30}
-										/>
-									</figure>
-									<div className="flex items-center gap-3">
-										<h2 className="font-sans font-bold text-xl">
-											4
-										</h2>
-										<p className="font-sans font-normal text-base">
-											x
-										</p>
-										<h2 className="font-sans font-bold text-xl">
-											0
-										</h2>
-									</div>
-									<figure className="flex gap-2 items-center">
-										<img
-											src="images/463debd5f273f60bf2bcee425f931223.png"
-											alt="Fluminense"
-											width={30}
-											height={30}
-										/>
-										<h3>FLU</h3>
-									</figure>
-								</main>
-								<footer>
-									<h2 className="text-xs font-sans text-buttonCard font-semibold">
-										VEJA COMO FOI
-									</h2>
-								</footer>
-							</li>
+							<Jogos
+								data="02/07/2022"
+								escudo1="images/463debd5f273f60bf2bcee425f931223.png"
+								time1="FLU"
+								golsTime1="4"
+								local="MARACANÃ"
+								hora="16:30"
+								escudo2="images/463debd5f273f60bf2bcee425f931223.png"
+								time2="FLU"
+								golsTime2="0"
+							/>
+							<Jogos
+								data="02/07/2022"
+								escudo1="images/463debd5f273f60bf2bcee425f931223.png"
+								time1="FLU"
+								golsTime1="4"
+								local="MARACANÃ"
+								hora="16:30"
+								escudo2="images/463debd5f273f60bf2bcee425f931223.png"
+								time2="FLU"
+								golsTime2="0"
+							/>
+							<Jogos
+								data="02/07/2022"
+								escudo1="images/463debd5f273f60bf2bcee425f931223.png"
+								time1="FLU"
+								golsTime1="4"
+								local="MARACANÃ"
+								hora="16:30"
+								escudo2="images/463debd5f273f60bf2bcee425f931223.png"
+								time2="FLU"
+								golsTime2="0"
+							/>
 						</ul>
 					</div>
 				</main>
