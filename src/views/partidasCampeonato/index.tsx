@@ -7,7 +7,7 @@ export const PartidasCampeonato = () => {
 	return (
 		<div>
 			<Menur ativo1="ativo" />
-			<SubMenu ativo2="ativo" />
+			<SubMenu ativo2="ativo" titulo="Partidas" />
 			<div className="absolute mt-40 px-10 w-full flex flex-col gap-14">
 				<NomeCampeonato />
 				<main className="flex flex-col gap-3 w-full">

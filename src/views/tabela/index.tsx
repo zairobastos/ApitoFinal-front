@@ -19,7 +19,7 @@ export const Tabela = () => {
 	return (
 		<div>
 			<Menur ativo1="ativo" />
-			<SubMenu ativo1="ativo" />
+			<SubMenu ativo1="ativo" titulo="Grupos e Tabelas" />
 			<div className="absolute mt-40 px-10 w-full flex flex-col gap-14">
 				<NomeCampeonato />
 				<main className="flex w-full h-full gap-8 mb-11">

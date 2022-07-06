@@ -6,7 +6,7 @@ export const DetalhesCampeonato = () => {
 	return (
 		<div>
 			<Menur ativo1="ativo" />
-			<SubMenu ativo="ativo" />
+			<SubMenu ativo="ativo" titulo="Detalhes" />
 			<div className="absolute mt-40 px-10 w-full flex flex-col gap-14">
 				<NomeCampeonato />
 				<main className="flex flex-col gap-7 z-0">
