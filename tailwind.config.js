@@ -12,6 +12,7 @@ module.exports = {
 				padrao_tela: "85.25",
 				telaCards: "70%",
 				card: "30%",
+				tabela: "10%",
 			},
 			height: {
 				102.3: "6.794",
@@ -44,7 +45,8 @@ module.exports = {
 				borderForm: "#f3f4f7",
 				buttonCard: "#018D30",
 				backgroundRecuperar: "#F9F9F9",
-				teste: "#ffff",
+				borderDireitaTimes: "#AAAAAA",
+				bgTabela: "#F5F5F5",
 			},
 			lineHeight: {
 				12: "4.90437rem",
