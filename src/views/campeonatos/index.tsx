@@ -1,12 +1,25 @@
 import { Menur } from "../../components/TelasHome/menu";
 import { Titulo } from "../../components/TelasHome/titulo";
-import premierLeague from "../../assets/images/premierLeague.png";
 import { ListarCadastrar } from "../../components/listarCadastrar";
 import { Cards } from "../../components/listarCadastrar/cards";
 import { Card } from "../../components/listarCadastrar/card";
 import { FormCampeonato } from "../../components/formCampeonato";
+import { useEffect, useState } from "react";
+import { api } from "../../server/api";
 
 export const Campeonatos = () => {
+	const [campeonatos, setCampeonatos] = useState([]);
+	useEffect(() => {
+		api.get(
+			"/campeonato/listarCampeonatos/328790c5-5819-49d6-a3ff-7c7aaa4a6da2"
+		)
+			.then((res) => {
+				setCampeonatos(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
 	return (
 		<div>
 			<Menur ativo1="ativo" />
@@ -17,34 +30,18 @@ export const Campeonatos = () => {
 				/>
 				<ListarCadastrar>
 					<Cards>
-						<Card
-							logo={premierLeague}
-							nome="Premier League"
-							descricao="Premier League 2022"
-							tipoCampeonato="Pontos Corridos"
-							dataFim="10/06/2022"
-						/>
-						<Card
-							logo={premierLeague}
-							nome="Premier League"
-							descricao="Premier League 2022"
-							tipoCampeonato="Pontos Corridos"
-							dataFim="10/06/2022"
-						/>
-						<Card
-							logo={premierLeague}
-							nome="Premier League"
-							descricao="Premier League 2022"
-							tipoCampeonato="Pontos Corridos"
-							dataFim="10/06/2022"
-						/>
-						<Card
-							logo={premierLeague}
-							nome="Premier League"
-							descricao="Premier League 2022"
-							tipoCampeonato="Pontos Corridos"
-							dataFim="10/06/2022"
-						/>
+						{campeonatos.map((campeonato: any) => {
+							return (
+								<Card
+									key={campeonato.id}
+									nome={campeonato.nome}
+									logo={campeonato.logo}
+									descricao={campeonato.descricao}
+									tipoCampeonato={campeonato.tipoCampeonato}
+									dataFim={campeonato.dataFim}
+								/>
+							);
+						})}
 					</Cards>
 
 					<FormCampeonato />

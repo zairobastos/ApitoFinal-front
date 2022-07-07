@@ -6,9 +6,23 @@ import CeltaDeVigo from "../../assets/images/CeltaDeVigo.svg";
 import { Placar } from "../../components/placar";
 import { ListaCampeonatos } from "../../components/listaCampeonatos";
 import Brasileirao from "../../assets/images/Brasileirao.png";
-import {VerTodosBtn} from "../../components/verTodosBtn/Index";
+import { VerTodosBtn } from "../../components/verTodosBtn/Index";
+import { useEffect, useState } from "react";
+import { api } from "../../server/api";
 
 export const PaginaInicial = () => {
+	const [campeonatos, setCampeonatos] = useState([]);
+	useEffect(() => {
+		api.get(
+			"/campeonato/listarCampeonatos/328790c5-5819-49d6-a3ff-7c7aaa4a6da2"
+		)
+			.then((res) => {
+				setCampeonatos(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
 	return (
 		<div>
 			<Menur ativo="ativo" />
@@ -81,18 +95,21 @@ export const PaginaInicial = () => {
 							<h2 className="text-xl font-home font-bold">
 								Últimos Campeonatos
 							</h2>
-							<VerTodosBtn 
+							<VerTodosBtn
 								route="/campeonato"
 								classNome="font-padrao text-lg font-bold text-verde-claro"
 							/>
 						</header>
-
-						<ListaCampeonatos
-							nomeCampeonato="Brasileirão"
-							statusCampeonato="Em Andamento"
-							tipoCampeonato="pontosCorrido"
-							logoCampeonato={Brasileirao}
-						/>
+						{campeonatos.map((campeonato: any) => {
+							return (
+								<ListaCampeonatos
+									nomeCampeonato={campeonato.nome}
+									statusCampeonato={campeonato.situacao}
+									tipoCampeonato={campeonato.tipoCampeonato}
+									logoCampeonato={campeonato.logo}
+								/>
+							);
+						})}
 					</main>
 				</main>
 				<FormCampeonato />
