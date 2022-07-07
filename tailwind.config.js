@@ -44,6 +44,7 @@ module.exports = {
 				borderForm: "#f3f4f7",
 				buttonCard: "#018D30",
 				backgroundRecuperar: "#F9F9F9",
+				teste: "#ffff",
 			},
 			lineHeight: {
 				12: "4.90437rem",
@@ -71,7 +72,5 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [
-		require('@tailwindcss/forms'),
-	],
+	plugins: [require("@tailwindcss/forms")],
 };
