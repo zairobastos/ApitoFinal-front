@@ -30,18 +30,27 @@ const Router = () => {
 				<Route path="/times" element={<Times />} />
 				<Route path="/jogadores" element={<Jogadores />} />
 				<Route path="/recuperarSenha" element={<RecuperarSenha />} />
-				<Route path="/editarUsuario" element={<PaginaEditarUsuario/>} />
 				<Route
-					path="/detalhesCampeonato"
+					path="/editarUsuario"
+					element={<PaginaEditarUsuario />}
+				/>
+				<Route
+					path="/detalhesCampeonato/:id"
 					element={<DetalhesCampeonato />}
 				/>
 				<Route path="/tabelaCampeonato" element={<Tabela />}></Route>
-				<Route path="/chavesCampeonato" element={<CampeonatoEmChaves />}></Route>
+				<Route
+					path="/chavesCampeonato"
+					element={<CampeonatoEmChaves />}
+				></Route>
 				<Route
 					path="/partidasCampeonato"
 					element={<PartidasCampeonato />}
 				/>
-				<Route path="/editarCampeonato" element={<EditarCampeonato />}></Route>
+				<Route
+					path="/editarCampeonato"
+					element={<EditarCampeonato />}
+				></Route>
 			</Routes>
 		</BrowserRouter>
 	);

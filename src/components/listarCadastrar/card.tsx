@@ -8,17 +8,11 @@ type dados = {
 	logo: string;
 	nome: string;
 	tipoCampeonato: string;
-	descricao: string;
+	id: string;
 	dataFim: string;
 };
 
-export const Card = ({
-	logo,
-	nome,
-	tipoCampeonato,
-	descricao,
-	dataFim,
-}: dados) => {
+export const Card = ({ logo, nome, tipoCampeonato, id, dataFim }: dados) => {
 	return (
 		<div className="flex w-card flex-col mb-8 border-2 border-solid shadow-menu border-borderCard rounded-xl">
 			<Figure>
@@ -43,7 +37,7 @@ export const Card = ({
 				</div>
 				<figure className="mb-7 mt-7 pr-7">
 					<Link
-						to="/detalhesCampeonato"
+						to={`/detalhesCampeonato/${id}`}
 						className="flex flex-row flex-wrap items-center h-full justify-end gap-1"
 					>
 						<p className="text-verde-claro font-home h-full  flex items-center font-bold text-base">

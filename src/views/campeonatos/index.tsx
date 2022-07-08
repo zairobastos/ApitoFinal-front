@@ -36,7 +36,7 @@ export const Campeonatos = () => {
 									key={campeonato.id}
 									nome={campeonato.nome}
 									logo={campeonato.logo}
-									descricao={campeonato.descricao}
+									id={campeonato.id}
 									tipoCampeonato={campeonato.tipoCampeonato}
 									dataFim={campeonato.dataFim}
 								/>

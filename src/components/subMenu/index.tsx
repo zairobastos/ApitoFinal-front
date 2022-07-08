@@ -3,10 +3,10 @@ import Descricao from "../../assets/images/descricao.svg";
 import Tabela from "../../assets/images/Tabela.svg";
 import Campo from "../../assets/images/campo.svg";
 import Player from "../../assets/images/Player.svg";
-import Chaves from "../../assets/images/Chaves.svg"
+import Chaves from "../../assets/images/Chaves.svg";
 import { Link } from "react-router-dom";
 import { Lista } from "./style";
-import {BtnEditar} from "../../components/btnEditarCampeonato/Index"
+import { BtnEditar } from "../../components/btnEditarCampeonato/Index";
 
 type ativos = {
 	ativo?: string;
@@ -16,12 +16,19 @@ type ativos = {
 	ativo4?: string;
 	titulo?: string;
 	btnEditarAtivo?: boolean;
-	
+	pontos: string;
 };
 
-
-
-export const SubMenu = ({ ativo1, ativo2, ativo3, ativo, titulo, ativo4, btnEditarAtivo }: ativos) => {
+export const SubMenu = ({
+	ativo1,
+	ativo2,
+	ativo3,
+	ativo,
+	titulo,
+	ativo4,
+	btnEditarAtivo,
+	pontos,
+}: ativos) => {
 	return (
 		<nav className="flex z-10 bg-preto mt-20 fixed w-full justify-between items-center text-white">
 			<div className="h-14 flex flex-wrap items-center">
@@ -38,20 +45,23 @@ export const SubMenu = ({ ativo1, ativo2, ativo3, ativo, titulo, ativo4, btnEdit
 							<img src={Descricao} alt="Icone de descricao" />
 						</li>
 					</Link>
-					<Link to="/tabelaCampeonato">
-						<li
-							className={`w-11 flex flex-wrap justify-center h-full items-center ${ativo1}`}
-						>
-							<img src={Tabela} alt="Icone de tabela" />
-						</li>
-					</Link>
-					<Link to="/chavesCampeonato">
-						<li
-							className={`w-11 flex flex-wrap justify-center h-full items-center ${ativo4}`}
-						>
-							<img src={Chaves} alt="Icone de Chaves" />
-						</li>
-					</Link>
+					{pontos == "PONTOS" ? (
+						<Link to="/tabelaCampeonato">
+							<li
+								className={`w-11 flex flex-wrap justify-center h-full items-center ${ativo1}`}
+							>
+								<img src={Tabela} alt="Icone de tabela" />
+							</li>
+						</Link>
+					) : (
+						<Link to="/chavesCampeonato">
+							<li
+								className={`w-11 flex flex-wrap justify-center h-full items-center ${ativo4}`}
+							>
+								<img src={Chaves} alt="Icone de Chaves" />
+							</li>
+						</Link>
+					)}
 					<Link to="/partidasCampeonato">
 						<li
 							className={`w-11 flex flex-wrap justify-center h-full items-center ${ativo2}`}
@@ -70,7 +80,7 @@ export const SubMenu = ({ ativo1, ativo2, ativo3, ativo, titulo, ativo4, btnEdit
 				<h3>{titulo} / Premier League</h3>
 			</div>
 			<div className="flex gap-4 mr-4">
-				<BtnEditar ativo={btnEditarAtivo}/>
+				<BtnEditar ativo={btnEditarAtivo} />
 				<button className="px-4 py-2 flex items-center border border-white rounded font-black text-lg font-home">
 					Excluir
 				</button>

@@ -1,12 +1,14 @@
 import Tabela from "../../assets/images/Tabela.png";
 import PlayOff from "../../assets/images/PlayOff.png";
 import Prosseguir from "../../assets/images/Prosseguir.svg";
+import { Link } from "react-router-dom";
 
 type dados = {
 	logoCampeonato?: string;
 	nomeCampeonato: string;
 	tipoCampeonato: string;
 	statusCampeonato: string;
+	id: string;
 };
 
 export const ListaCampeonatos = ({
@@ -14,6 +16,7 @@ export const ListaCampeonatos = ({
 	nomeCampeonato,
 	tipoCampeonato,
 	statusCampeonato,
+	id,
 }: dados) => {
 	return (
 		<div className="flex flex-col flex-wrap mb-4">
@@ -37,10 +40,15 @@ export const ListaCampeonatos = ({
 					</p>
 				</main>
 				<footer className="flex w-4/12 flex-row flex-wrap justify-end gap-2 items-center">
-					<p className="text-buttonCard text-base font-light font-home">
-						Ver Detalhes
-					</p>
-					<img src={Prosseguir} alt="" />
+					<Link
+						to={`/detalhesCampeonato/${id}`}
+						className="flex flex-row flex-wrap items-center h-full justify-end gap-1"
+					>
+						<p className="text-buttonCard text-base font-light font-home">
+							Ver Detalhes
+						</p>
+						<img src={Prosseguir} alt="" />
+					</Link>
 				</footer>
 			</div>
 		</div>

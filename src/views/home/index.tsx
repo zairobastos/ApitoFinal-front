@@ -107,6 +107,8 @@ export const PaginaInicial = () => {
 									statusCampeonato={campeonato.situacao}
 									tipoCampeonato={campeonato.tipoCampeonato}
 									logoCampeonato={campeonato.logo}
+									id={campeonato.id}
+									key={campeonato.id}
 								/>
 							);
 						})}
