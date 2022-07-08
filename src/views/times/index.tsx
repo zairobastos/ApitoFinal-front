@@ -61,7 +61,7 @@ export const Times = () => {
 	const [loading, setLoading] = useState(false);
 	const [times, setTimes] = useState([]);
 	useEffect(() => {
-		api.get("/times/buscar/328790c5-5819-49d6-a3ff-7c7aaa4a6da2")
+		api.get("/times/buscar/665d4c6a-9268-4257-8c47-22074571b9e3")
 			.then((res) => {
 				setTimes(res.data);
 			})
@@ -173,7 +173,7 @@ export const Times = () => {
 									type="hidden"
 									name="userId"
 									id="userId"
-									value="328790c5-5819-49d6-a3ff-7c7aaa4a6da2"
+									value="665d4c6a-9268-4257-8c47-22074571b9e3"
 								/>
 								<button
 									type="submit"

@@ -6,6 +6,7 @@ import Player from "../../assets/images/Player.svg";
 import Chaves from "../../assets/images/Chaves.svg"
 import { Link } from "react-router-dom";
 import { Lista } from "./style";
+import {BtnEditar} from "../../components/btnEditarCampeonato/Index"
 
 type ativos = {
 	ativo?: string;
@@ -14,10 +15,13 @@ type ativos = {
 	ativo3?: string;
 	ativo4?: string;
 	titulo?: string;
+	btnEditarAtivo?: boolean;
+	
 };
 
 
-export const SubMenu = ({ ativo1, ativo2, ativo3, ativo, titulo, ativo4 }: ativos) => {
+
+export const SubMenu = ({ ativo1, ativo2, ativo3, ativo, titulo, ativo4, btnEditarAtivo }: ativos) => {
 	return (
 		<nav className="flex z-10 bg-preto mt-20 fixed w-full justify-between items-center text-white">
 			<div className="h-14 flex flex-wrap items-center">
@@ -66,9 +70,7 @@ export const SubMenu = ({ ativo1, ativo2, ativo3, ativo, titulo, ativo4 }: ativo
 				<h3>{titulo} / Premier League</h3>
 			</div>
 			<div className="flex gap-4 mr-4">
-				<button className="px-4 py-2 flex items-center bg-white text-preto rounded font-black text-lg font-home">
-					Editar
-				</button>
+				<BtnEditar ativo={btnEditarAtivo}/>
 				<button className="px-4 py-2 flex items-center border border-white rounded font-black text-lg font-home">
 					Excluir
 				</button>
