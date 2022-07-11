@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ApitoFinal } from "../views/ApitoFinal";
 import { Cadastrar } from "../views/cadastrar";
 import { Campeonatos } from "../views/campeonatos";
@@ -16,43 +16,73 @@ import { PartidasCampeonato } from "../views/partidasCampeonato";
 import { CampeonatoEmChaves } from "../views/chavesCampeonato/Index";
 import { EditarCampeonato } from "../views/editarCampeonato/Index";
 
+import { ContextProvider } from "../context/Context";
+import { Context } from "../context/Context";
+import { useContext } from "react";
+import { Error } from "../views/error";
+
 const Router = () => {
+	const { isLogin } = useContext(Context);
 	return (
-		<BrowserRouter>
-			<Routes>
-				<Route path="/" element={<Index />}>
-					<Route path="home" element={<Home />} />
-				</Route>
-				<Route path="/login" element={<Login />} />
-				<Route path="/cadastrar" element={<Cadastrar />} />
-				<Route path="/paginaInicial" element={<PaginaInicial />} />
-				<Route path="/campeonato" element={<Campeonatos />} />
-				<Route path="/times" element={<Times />} />
-				<Route path="/jogadores" element={<Jogadores />} />
-				<Route path="/recuperarSenha" element={<RecuperarSenha />} />
-				<Route
-					path="/editarUsuario"
-					element={<PaginaEditarUsuario />}
-				/>
-				<Route
-					path="/detalhesCampeonato/:id"
-					element={<DetalhesCampeonato />}
-				/>
-				<Route path="/tabelaCampeonato" element={<Tabela />}></Route>
-				<Route
-					path="/chavesCampeonato"
-					element={<CampeonatoEmChaves />}
-				></Route>
-				<Route
-					path="/partidasCampeonato"
-					element={<PartidasCampeonato />}
-				/>
-				<Route
-					path="/editarCampeonato"
-					element={<EditarCampeonato />}
-				></Route>
-			</Routes>
-		</BrowserRouter>
+		<ContextProvider>
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<Index />}>
+						<Route path="home" element={<Home />} />
+					</Route>
+					<Route path="/login" element={<Login />} />
+					<Route path="/cadastrar" element={<Cadastrar />} />
+					<Route path="/error" element={<Error />} />
+					{isLogin ? (
+						<>
+							<Route
+								path="/paginaInicial"
+								element={<PaginaInicial />}
+							/>
+							<Route
+								path="/campeonato"
+								element={<Campeonatos />}
+							/>
+							<Route path="/times" element={<Times />} />
+							<Route path="/jogadores" element={<Jogadores />} />
+							<Route
+								path="/recuperarSenha"
+								element={<RecuperarSenha />}
+							/>
+							<Route
+								path="/editarUsuario"
+								element={<PaginaEditarUsuario />}
+							/>
+							<Route
+								path="/detalhesCampeonato/:id"
+								element={<DetalhesCampeonato />}
+							/>
+							<Route
+								path="/tabelaCampeonato"
+								element={<Tabela />}
+							></Route>
+							<Route
+								path="/chavesCampeonato"
+								element={<CampeonatoEmChaves />}
+							></Route>
+							<Route
+								path="/partidasCampeonato"
+								element={<PartidasCampeonato />}
+							/>
+							<Route
+								path="/editarCampeonato"
+								element={<EditarCampeonato />}
+							></Route>
+						</>
+					) : (
+						<Route
+							path="*"
+							element={<Navigate to="/error" replace />}
+						></Route>
+					)}
+				</Routes>
+			</BrowserRouter>
+		</ContextProvider>
 	);
 };
 
