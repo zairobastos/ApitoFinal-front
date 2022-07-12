@@ -194,28 +194,22 @@ export const Login = () => {
 					>
 						Esqueceu a senha?
 					</Link>
-					<Link 
-						to={"/paginaInicial"}
-						className={`${disable} text-white mt-6 rounded-inputLogin py-2.5 text-base font-sans font-semibold `}
-
+					<button
+						type="submit"
+						disabled={isDisableButton()}
+						className={`${disable} text-white mt-6 rounded-inputLogin py-2.5 text-base font-sans font-semibold text `}
 					>
-						<button
-							type="submit"
-							disabled={isDisableButton()}
-						>
-							{loading ? (
-								<div className="h-6 flex justify-center items-center">
-									<CircleNotch
-										size={30}
-										className="animate-spin"
-									/>
-								</div>
-							) : (
-								"Entrar"
-							)}
-						
-						</button>
-					</Link>
+						{loading ? (
+							<div className="h-6 flex justify-center items-center">
+								<CircleNotch
+									size={30}
+									className="animate-spin"
+								/>
+							</div>
+						) : (
+							"Entrar"
+						)}
+					</button>
 					<p className="mt-6 font-padrao font-semibold text-base text-labelLogin">
 						Ainda não tem uma conta?{" "}
 						<Link to={"/cadastrar"} className="text-verde-claro">
