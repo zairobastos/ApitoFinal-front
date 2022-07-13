@@ -4,6 +4,7 @@ interface botao{
     link: string,
     texto: string,
     classname: string,
+    onClick?:any
 }
 
 export function Btn(props:botao){
@@ -12,6 +13,7 @@ export function Btn(props:botao){
 			<button
 				className={`
                 ${props.classname}`}
+                onClick={props.onClick}
                 
             >
 		            {props.texto}
