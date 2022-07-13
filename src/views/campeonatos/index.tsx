@@ -4,22 +4,22 @@ import { ListarCadastrar } from "../../components/listarCadastrar";
 import { Cards } from "../../components/listarCadastrar/cards";
 import { Card } from "../../components/listarCadastrar/card";
 import { FormCampeonato } from "../../components/formCampeonato";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { api } from "../../server/api";
+import { AuthContext } from "../../context/Auth/AuthContext";
 
 export const Campeonatos = () => {
 	const [campeonatos, setCampeonatos] = useState([]);
+	const user = useContext(AuthContext);
 	useEffect(() => {
-		api.get(
-			"/campeonato/listarCampeonatos/328790c5-5819-49d6-a3ff-7c7aaa4a6da2"
-		)
+		api.get(`/campeonato/listarCampeonatos/${user.user.id}`)
 			.then((res) => {
 				setCampeonatos(res.data);
 			})
 			.catch((err) => {
 				console.log(err);
 			});
-	}, []);
+	}, [user]);
 	return (
 		<div>
 			<Menur ativo1="ativo" />

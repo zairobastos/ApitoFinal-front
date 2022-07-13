@@ -6,8 +6,9 @@ import { Titulo } from "../../components/TelasHome/titulo";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { api } from "../../server/api";
+import { AuthContext } from "../../context/Auth/AuthContext";
 
 export const Jogadores = () => {
 	const cadastrarJogadores = Yup.object().shape({
@@ -40,8 +41,9 @@ export const Jogadores = () => {
 	}
 
 	const [jogadores, setJogadores] = useState([]);
+	const user = useContext(AuthContext);
 	useEffect(() => {
-		api.get("/jogador/listar/665d4c6a-9268-4257-8c47-22074571b9e3")
+		api.get(`/jogador/listar/af441510-bc86-4b37-847d-a684f3b9946c`)
 			.then((res) => {
 				setJogadores(res.data);
 			})
