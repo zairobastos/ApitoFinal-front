@@ -17,6 +17,7 @@ type ativos = {
 	titulo?: string;
 	btnEditarAtivo?: boolean;
 	pontos: string;
+	id: string;
 };
 
 export const SubMenu = ({
@@ -28,6 +29,7 @@ export const SubMenu = ({
 	ativo4,
 	btnEditarAtivo,
 	pontos,
+	id,
 }: ativos) => {
 	return (
 		<nav className="flex z-10 bg-preto mt-20 fixed w-full justify-between items-center text-white">
@@ -38,7 +40,7 @@ export const SubMenu = ({
 							<IoIosArrowBack className="text-lg" />
 						</li>
 					</Link>
-					<Link to="/detalhesCampeonato">
+					<Link to={`/detalhesCampeonato/${id}`}>
 						<li
 							className={`w-11 flex ${ativo} flex-wrap justify-center h-full items-center`}
 						>
@@ -46,7 +48,7 @@ export const SubMenu = ({
 						</li>
 					</Link>
 					{pontos == "PONTOS" ? (
-						<Link to="/tabelaCampeonato">
+						<Link to={`/tabelaCampeonato/${id}`}>
 							<li
 								className={`w-11 flex flex-wrap justify-center h-full items-center ${ativo1}`}
 							>
@@ -54,7 +56,7 @@ export const SubMenu = ({
 							</li>
 						</Link>
 					) : (
-						<Link to="/chavesCampeonato">
+						<Link to={`/chavesCampeonato/${id}`}>
 							<li
 								className={`w-11 flex flex-wrap justify-center h-full items-center ${ativo4}`}
 							>
@@ -62,7 +64,7 @@ export const SubMenu = ({
 							</li>
 						</Link>
 					)}
-					<Link to="/partidasCampeonato">
+					<Link to={`/partidasCampeonato/${id}`}>
 						<li
 							className={`w-11 flex flex-wrap justify-center h-full items-center ${ativo2}`}
 						>
