@@ -1,10 +1,10 @@
 import Calendario from "../../assets/images/calendar.svg";
 import moment from "moment";
 interface Dados {
-	logo: string;
-	nome: string;
-	dataInicio: string;
-	dataFim: string;
+	logo?: string;
+	nome?: string;
+	dataInicio?: string;
+	dataFim?: string;
 }
 
 export const NomeCampeonato = ({ logo, nome, dataInicio, dataFim }: Dados) => {

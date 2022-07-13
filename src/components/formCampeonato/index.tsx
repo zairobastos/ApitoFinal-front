@@ -344,7 +344,7 @@ export const FormCampeonato = () => {
 					<input
 						type="hidden"
 						name="userId"
-						value="328790c5-5819-49d6-a3ff-7c7aaa4a6da2"
+						value="665d4c6a-9268-4257-8c47-22074571b9e3"
 					/>
 					<input type="hidden" name="situacao" value="ABERTO" />
 					<div className="flex justify-between items-center flex-wrap gap-1.5">
@@ -359,7 +359,7 @@ export const FormCampeonato = () => {
 							type="submit"
 							className={`w-8/12 px-5.5 h-full py-3.5 rounded bg-buttonLogin text-white font-sans font-semibold leading-4 text-center ${disable2}`}
 						>
-							Cadastrar Time
+							Cadastrar Campeonato
 						</button>
 					</div>
 				</div>

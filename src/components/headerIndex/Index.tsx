@@ -25,7 +25,7 @@ export function Index(props:head){
                 <Link 
                     to={props.up} 
                     smooth={true} 
-                    duration='1000'
+                    //duration='1000'
                 >
                     <CaretCircleUp className="hover:cursor-pointer" size={56} color="#F4F0F0" />
 

@@ -16,7 +16,7 @@ type ativos = {
 	ativo4?: string;
 	titulo?: string;
 	btnEditarAtivo?: boolean;
-	pontos: string;
+	pontos?: string;
 };
 
 export const SubMenu = ({

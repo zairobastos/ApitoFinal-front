@@ -59,9 +59,7 @@ export function CampeonatoEmChaves(){
 			<div className="absolute mt-40 px-10 w-full flex flex-col gap-14">
 				<NomeCampeonato />
 				<main className="flex flex-col gap-7 z-0 ">
-					<div>
-                       
-                    </div>
+					<Chaves/>
                     <div className="flex flex-row gap-4 ml-[45rem]">
                        <Btn link="/" 
 					   		texto="Gerar Partidas" 
