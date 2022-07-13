@@ -7,8 +7,9 @@ import { Placar } from "../../components/placar";
 import { ListaCampeonatos } from "../../components/listaCampeonatos";
 import Brasileirao from "../../assets/images/Brasileirao.png";
 import { VerTodosBtn } from "../../components/verTodosBtn/Index";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { api } from "../../server/api";
+import { AuthContext } from "../../context/Auth/AuthContext";
 
 export const PaginaInicial = () => {
 
@@ -16,6 +17,7 @@ export const PaginaInicial = () => {
 
 	const [partidas, setPartidas] = useState([]);
 	const [campeonatos, setCampeonatos] = useState([]);
+	const user = useContext(AuthContext);
 
 	useEffect(() => {
 		api.get("/partida/listarTodasPartidas")
@@ -28,17 +30,18 @@ export const PaginaInicial = () => {
 	}, []);
 
 	useEffect(() => {
-		api.get(
-			"/campeonato/listarCampeonatos/328790c5-5819-49d6-a3ff-7c7aaa4a6da2"
-		)
+		api.get(`/campeonato/listarCampeonatos/${user.user.id}`)
 			.then((res) => {
 				setCampeonatos(res.data);
 			})
 			.catch((err) => {
+	
+	
+	
+	
 				console.log(err);
 			});
-	}, []);
-	
+	}, [user]);
 	return (
 		<div>
 			<Menur ativo="ativo" />

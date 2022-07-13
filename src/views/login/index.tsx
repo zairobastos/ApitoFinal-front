@@ -4,16 +4,17 @@ import { FooterImg } from "../../components/login/footer";
 import { HeaderForm } from "../../components/login/headerForm";
 import { Inputi } from "../../components/login/form/style";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { api } from "../../server/api";
 import { CircleNotch } from "phosphor-react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../context/Auth/AuthContext";
 
 export const Login = () => {
 	const SinginSchema = Yup.object().shape({
@@ -71,41 +72,20 @@ export const Login = () => {
 			return false;
 		}
 	};
-
 	const [loading, setLoading] = useState(false);
-	const handleSubmit = (e: FormEvent) => {
+	const auth = useContext(AuthContext);
+	const navigate = useNavigate();
+	const handleSubmit = async (e: FormEvent) => {
 		e.preventDefault();
-		setLoading(true);
-		const Toast = Swal.mixin({
-			toast: true,
-			position: "top-end",
-			showConfirmButton: false,
-			timer: 2000,
-			timerProgressBar: true,
-			didOpen: (toast) => {
-				toast.addEventListener("mouseenter", Swal.stopTimer);
-				toast.addEventListener("mouseleave", Swal.resumeTimer);
-			},
-		});
-		setTimeout(() => {
-			api.post("/usuario/login", {
-				email: formik.values.email,
-				senha: formik.values.senha,
-			})
-				.then((res) => {
-					Toast.fire({
-						icon: "success",
-						title: `${res.data.message}`,
-					});
-				})
-				.catch((err) => {
-					Toast.fire({
-						icon: "error",
-						title: `${err.response.data.message}`,
-					});
-				});
-			setLoading(false);
-		}, 2000);
+		const isLogged = await auth.singin(
+			formik.values.email,
+			formik.values.senha
+		);
+		if (isLogged) {
+			navigate("/paginaInicial");
+		} else {
+			alert("Deu errado viu");
+		}
 	};
 
 	return (
@@ -197,18 +177,9 @@ export const Login = () => {
 					<button
 						type="submit"
 						disabled={isDisableButton()}
-						className={`${disable} text-white mt-6 rounded-inputLogin py-2.5 text-base font-sans font-semibold text `}
+						className={`${disable} text-white mt-6 rounded-inputLogin py-2.5 text-base font-sans font-semibold `}
 					>
-						{loading ? (
-							<div className="h-6 flex justify-center items-center">
-								<CircleNotch
-									size={30}
-									className="animate-spin"
-								/>
-							</div>
-						) : (
-							"Entrar"
-						)}
+						Entrar
 					</button>
 					<p className="mt-6 font-padrao font-semibold text-base text-labelLogin">
 						Ainda não tem uma conta?{" "}

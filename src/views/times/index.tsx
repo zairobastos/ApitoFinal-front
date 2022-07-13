@@ -6,9 +6,10 @@ import { Titulo } from "../../components/TelasHome/titulo";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { api } from "../../server/api";
 import { CircleNotch } from "phosphor-react";
+import { AuthContext } from "../../context/Auth/AuthContext";
 
 export const Times = () => {
 	const cadastrarTimes = Yup.object().shape({
@@ -60,15 +61,16 @@ export const Times = () => {
 
 	const [loading, setLoading] = useState(false);
 	const [times, setTimes] = useState([]);
+	const user = useContext(AuthContext);
 	useEffect(() => {
-		api.get("/times/buscar/665d4c6a-9268-4257-8c47-22074571b9e3")
+		api.get(`/times/buscar/${user.user.id}`)
 			.then((res) => {
 				setTimes(res.data);
 			})
 			.catch((err) => {
 				console.log(err);
 			});
-	}, []);
+	}, [user]);
 	return (
 		<div>
 			<Menur ativo2="ativo" />
