@@ -34,7 +34,7 @@ export const Menur = ({ ativo, ativo1, ativo2, ativo3 }: ativos) => {
 	};
 
 	useEffect(() => {
-		api.get(`/usuario/retornaNome/${user.user.id}`)
+		api.get(`/usuario/retornaUsuario/${user.user.id}`)
 			.then((res) => {
 				setNome(res.data.nome);
 				setImagem(res.data.imagem);
