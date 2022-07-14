@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Menur } from "../../components/TelasHome/menu";
 import { AuthContext } from "../../context/Auth/AuthContext";
 import { api } from "../../server/api";
@@ -25,6 +25,21 @@ export const DetalhesTime = () => {
 				console.log(err);
 			});
 	}, [api]);
+
+	const navigate = useNavigate();
+	const deletar = () => {
+		let confirmacao = window.confirm("Deseja deletar o jogador?");
+		if (confirmacao) {
+			api.delete(`/times/delete/${params.id}`)
+				.then((res) => {
+					navigate("/times");
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		}
+	};
+
 	return (
 		<>
 			<Menur ativo2="ativo" />
@@ -60,7 +75,10 @@ export const DetalhesTime = () => {
 								<li className="text-padrao text-xl bg-editar text-fontEditar px-4 py-1 rounded">
 									Editar
 								</li>
-								<li className="text-padrao text-xl bg-excluir text-fontExcluir px-4 py-1 rounded">
+								<li
+									onClick={deletar}
+									className="text-padrao cursor-pointer text-xl bg-excluir text-fontExcluir px-4 py-1 rounded"
+								>
 									Excluir
 								</li>
 							</ul>
