@@ -19,6 +19,7 @@ import { EditarCampeonato } from "../views/editarCampeonato/Index";
 import { AuthProvider } from "../context/Auth/AuthProvider";
 import { RequireAuth } from "../context/Auth/RequireAuth";
 import { SelecionarTime } from "../views/SelecionarTime";
+import { DetalhesTime } from "../views/detalhesTime";
 
 const Router = () => {
 	return (
@@ -120,6 +121,14 @@ const Router = () => {
 						element={
 							<RequireAuth>
 								<SelecionarTime />
+							</RequireAuth>
+						}
+					></Route>
+					<Route
+						path="/detalhesTime/:id"
+						element={
+							<RequireAuth>
+								<DetalhesTime />
 							</RequireAuth>
 						}
 					></Route>

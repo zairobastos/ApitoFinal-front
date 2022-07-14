@@ -47,6 +47,10 @@ module.exports = {
 				backgroundRecuperar: "#F9F9F9",
 				borderDireitaTimes: "#AAAAAA",
 				bgTabela: "#F5F5F5",
+				editar: "rgba(250, 193, 47, 0.2)",
+				excluir: "rgba(245, 74, 72, 0.2)",
+				fontEditar: "#FAC12F",
+				fontExcluir: "#F54A48",
 			},
 			lineHeight: {
 				12: "4.90437rem",

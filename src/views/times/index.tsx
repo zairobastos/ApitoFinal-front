@@ -10,6 +10,7 @@ import { useContext, useEffect, useState } from "react";
 import { api } from "../../server/api";
 import { CircleNotch } from "phosphor-react";
 import { AuthContext } from "../../context/Auth/AuthContext";
+import { ListarTimes } from "../../components/listarTime";
 
 export const Times = () => {
 	const cadastrarTimes = Yup.object().shape({
@@ -83,10 +84,11 @@ export const Times = () => {
 					<Cards>
 						{times.map((time: any) => {
 							return (
-								<ListarJogadoresTimes
+								<ListarTimes
 									key={time.id}
 									foto={time.escudo}
 									nome={time.nome}
+									id={time.id}
 								/>
 							);
 						})}
