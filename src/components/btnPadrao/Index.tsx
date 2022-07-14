@@ -14,7 +14,6 @@ export function Btn(props:botao){
 				className={`
                 ${props.classname}`}
                 onClick={props.onClick}
-                
             >
 		            {props.texto}
 			</button>
