@@ -93,10 +93,10 @@ export function NossaEquipe(){
                                 lg:flex-row lg:gap-10 lg:pt-6
                                 pl-3"
                             >
-                                    <Card img={imgDev1} nome="Gabriel Rudan" dev="Front-End" link={linksGit[0]} isFemale={false}/>
-                                    <Card img={imgDev4} nome="Letícia Torres" dev="Front-End" link={linksGit[3]} isFemale={true}/>
-                                    <Card img={imgDev2} nome="Zairo Bastos" dev="Back-End" link={linksGit[1]} isFemale={false}/>
-                                    <Card img={imgDev3} nome="Raylander Marques" dev="Front-End" link={linksGit[2]} isFemale={false}/>
+                                    <Card img={imgDev1} nome="Gabriel Rudan" dev="Front-End" link={linksGit[0]} isFemale={false} isDesigner={true}/>
+                                    <Card img={imgDev4} nome="Letícia Torres" dev="Front-End" link={linksGit[3]} isFemale={true} isDesigner={false}/>
+                                    <Card img={imgDev2} nome="Zairo Bastos" dev="Back-End" link={linksGit[1]} isFemale={false} isDesigner={false}/>
+                                    <Card img={imgDev3} nome="Raylander Marques" dev="Front-End" link={linksGit[2]} isFemale={false} isDesigner={false}/>
                             </div>
                         </div>
                     </div>

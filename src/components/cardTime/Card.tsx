@@ -5,6 +5,7 @@ interface timeProps{
     nome: string
     dev: string
     isFemale: boolean
+    isDesigner:boolean
 }
 
 
@@ -34,9 +35,9 @@ export function Card(props:timeProps){
                     {props.nome}
                 </span>
 
-                {isFemale ?
+                {props.isDesigner? <span>Designer</span>: <>{isFemale ?
                 <span>Desenvolvedora {props.dev}</span>
-                :<span>Desenvolvedor {props.dev}</span>}
+                :<span>Desenvolvedor {props.dev}</span>}</>}
                 
             </div>
             

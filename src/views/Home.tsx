@@ -1,6 +1,7 @@
 import { BarraMenuInicial } from "../components/barraMenuInicial/BarraMenuInicial";
 import { BtnSocialMedias } from "../components/btnSocialMedias/BtnSocialMedias"
 import jogadorImg from "../assets/images/jogador-1.svg";
+import { Link } from "react-router-dom";
 
 
 export function Home(){
@@ -37,12 +38,14 @@ export function Home(){
 							esportivos, e jogadores incríveis sem sair de casa.
 						</p>
 						<div className="flex justify-center flex-wrap gap-6">
-							<button
-								type="button"
-								className="btn-index btn-index-preto hover:bg-verde-claro"
-							>
-								Cadastrar
-							</button>
+							<Link to={'/cadastrar'}>
+								<button
+									type="button"
+									className="btn-index btn-index-preto hover:bg-verde-claro"
+								>
+									Cadastrar
+								</button>
+							</Link>
 						</div>
 
 
