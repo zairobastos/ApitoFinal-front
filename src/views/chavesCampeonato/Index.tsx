@@ -32,6 +32,13 @@ export function CampeonatoEmChaves() {
 			.catch((err) => {
 				console.error("Times não recuperados");
 			});
+		api.get(`/campeonato/buscar/${params.id}`)
+			.then((res) => {
+				setTorneio(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	}, []);
 
 	{
@@ -52,13 +59,20 @@ export function CampeonatoEmChaves() {
 	return (
 		<div>
 			<Menur ativo1="ativo" />
-			<SubMenu
-				ativo1="desativo"
-				ativo4="ativo"
-				btnEditarAtivo={true}
-				pontos={"PONTOS"}
-				id={`${params.id}`}
-			/>
+			{torneio.map((torneios: any, index: number) => {
+				return (
+					<>
+						<SubMenu
+							ativo1="ativo"
+							titulo="Grupos e Tabelas"
+							btnEditarAtivo={true}
+							pontos={`${torneios.tipoCampeonato}`}
+							id={`${params.id}`}
+						/>
+						;
+					</>
+				);
+			})}
 			<div className="absolute mt-40 px-10 w-full flex flex-col gap-14">
 				<NomeCampeonato id={`${params.id}`} />
 				<main className="flex flex-col gap-7 z-0 ">

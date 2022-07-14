@@ -4,8 +4,9 @@ import { Linha } from "../../components/linhaTabela";
 import { NomeCampeonato } from "../../components/NomeCampeonato";
 import { SubMenu } from "../../components/subMenu";
 import { Menur } from "../../components/TelasHome/menu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { api } from "../../server/api";
 
 export const Tabela = () => {
 	const [rodada, setRodada] = useState(1);
@@ -18,16 +19,33 @@ export const Tabela = () => {
 		}
 	};
 	const params = useParams();
+	const [torneio, setTorneio] = useState([]);
+	useEffect(() => {
+		api.get(`/campeonato/buscar/${params.id}`)
+			.then((res) => {
+				setTorneio(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
 	return (
 		<div>
 			<Menur ativo1="ativo" />
-			<SubMenu
-				ativo1="ativo"
-				titulo="Grupos e Tabelas"
-				btnEditarAtivo={true}
-				pontos={""}
-				id={`${params.id}`}
-			/>
+			{torneio.map((torneios: any, index: number) => {
+				return (
+					<>
+						<SubMenu
+							ativo4="ativo"
+							titulo="Grupos e Tabelas"
+							btnEditarAtivo={true}
+							pontos={`${torneios.tipoCampeonato}`}
+							id={`${params.id}`}
+						/>
+						;
+					</>
+				);
+			})}
 			<div className="absolute mt-40 px-10 w-full flex flex-col gap-14">
 				<NomeCampeonato id={`${params.id}`} />
 				<main className="flex w-full h-full gap-8 mb-11">
@@ -179,3 +197,6 @@ export const Tabela = () => {
 		</div>
 	);
 };
+function setTorneio(data: any) {
+	throw new Error("Function not implemented.");
+}
