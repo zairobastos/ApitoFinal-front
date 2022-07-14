@@ -35,10 +35,6 @@ export const PaginaInicial = () => {
 				setCampeonatos(res.data);
 			})
 			.catch((err) => {
-	
-	
-	
-	
 				console.log(err);
 			});
 	}, [user]);
