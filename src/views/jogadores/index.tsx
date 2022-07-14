@@ -41,11 +41,19 @@ export const Jogadores = () => {
 	}
 
 	const [jogadores, setJogadores] = useState([]);
+	const [times, setTimes] = useState<any[]>([]);
 	const user = useContext(AuthContext);
 	useEffect(() => {
-		api.get(`/jogador/listar/${user.user.id}`)
+		api.get(`/jogador/listarUser/${user.user.id}`)
 			.then((res) => {
 				setJogadores(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+		api.get(`/times/buscar/${user.user.id}`)
+			.then((res) => {
+				setTimes(res.data);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -138,6 +146,33 @@ export const Jogadores = () => {
 										</optgroup>
 									</select>
 								</div>
+								<div className="flex flex-col flex-wrap gap-1 5">
+									<label
+										htmlFor="timeId"
+										className="text-base font-sans font-semibold leading-4 text-labelLogin"
+									>
+										Time
+									</label>
+									<select
+										name="timeId"
+										id="timeId"
+										required
+										className={`px-2.5 py-3.5 rounded-inputLogin bg-input border-inputBorder border-solid`}
+									>
+										<optgroup label="Times">
+											{times.map((time) => {
+												return (
+													<option
+														key={time.id}
+														value={time.id}
+													>
+														{time.nome}
+													</option>
+												);
+											})}
+										</optgroup>
+									</select>
+								</div>
 								<div className="flex flex-col flex-wrap gap-1.5">
 									<label
 										htmlFor="numero"
@@ -184,7 +219,7 @@ export const Jogadores = () => {
 								</div>
 								<input
 									type="hidden"
-									name="timeId"
+									name="userId"
 									id="userId"
 									value={`${user.user.id}`}
 								/>
