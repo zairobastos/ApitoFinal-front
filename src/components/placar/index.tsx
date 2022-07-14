@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../context/Auth/AuthContext";
 import { api } from "../../server/api";
 
 type dados = {
@@ -10,16 +11,14 @@ type dados = {
 
 export const Placar = ({ timeX, golsX, timeY, golsY}: dados) => {
 
-	const [time1, setTime1] = useState("");
-	const [nome1, setNome1] = useState("");
-	const [time2, setTime2] = useState("");
-	const [nome2, setNome2] = useState("");
+	const [time1, setTime1] = useState([]);
+	const [time2, setTime2] = useState([]);
+	const user = useContext(AuthContext);
 
 	useEffect(() => {
-		api.get(`/times/buscarTimesId/${timeX}`)
+		api.get(`/times/buscarTimesId/${timeX}/${user.user.id}`)
 			.then((res) => {
-				setTime1(res.data.escudo);
-				setNome1(res.data.nome);
+				setTime1(res.data);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -27,27 +26,36 @@ export const Placar = ({ timeX, golsX, timeY, golsY}: dados) => {
 	},[]);
 
 	useEffect(() => {
-		api.get(`/times/buscarTimesId/${timeY}`)
+		api.get(`/times/buscarTimesId/${timeY}/${user.user.id}`)
 			.then((res) => {
-				setTime2(res.data.escudo);
-				setNome2(res.data.nome);
+				setTime2(res.data);
 			})
 			.catch((err) => {
 				console.log(err);
 			});
 	},[]);
+
+	console.log(time1,time2)
 
 	return (
 		<figure className="flex flex-row flex-wrap items-center justify-between">
-			<div className="w-6">
-				<img src={time1} alt={nome1} />
-			</div>
+			{time1.map((time : any) => {
+				return(
+					<div className="w-6">
+						<img src={time.escudo} alt={time.nome} />
+					</div>
+				)
+			})}
 			<p className="text-xl font-home font-semibold tracking-widest">
 				{golsX} : {golsY}
 			</p>
-			<div className="w-6">
-				<img src={time2} alt={nome2} />
-			</div>
+			{time2.map((time : any) => {
+				return(
+					<div className="w-6">
+						<img src={time.escudo} alt={time.nome} />
+					</div>
+				)
+			})}
 		</figure>
 	);
 };

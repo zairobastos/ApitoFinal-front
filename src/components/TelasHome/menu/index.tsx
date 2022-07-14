@@ -6,9 +6,10 @@ import { FaUserCircle } from "react-icons/fa";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { FiLogOut } from "react-icons/fi";
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Btn } from "../../btnPadrao/Index";
 import { AuthContext } from "../../../context/Auth/AuthContext";
+import { api } from "../../../server/api";
 
 type ativos = {
 	ativo?: string;
@@ -18,16 +19,31 @@ type ativos = {
 };
 
 export const Menur = ({ ativo, ativo1, ativo2, ativo3 }: ativos) => {
+	const user = useContext(AuthContext);
+	const [nome, setNome] = useState("");
+	const [imagem, setImagem] = useState("");
 	const [janela, setJanela] = useState(false);
 	const aparecer = () => {
 		setJanela(!janela);
 	};
-	const api = useContext(AuthContext);
+	const apiAuth = useContext(AuthContext);
 	const navigate = useNavigate();
 	const desloga = () => {
-		api.singout();
+		apiAuth.singout();
 		navigate("/login");
 	};
+
+	useEffect(() => {
+		api.get(`/usuario/retornaNome/${user.user.id}`)
+			.then((res) => {
+				setNome(res.data.nome);
+				setImagem(res.data.imagem);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, [user]);
+
 	return (
 		<>
 			<header className="flex bg-white z-10 top-0 w-full fixed flex-row flex-wrap justify-between h-20 shadow-menu  px-10 border-b border-solid border-borderMenu">
@@ -64,14 +80,14 @@ export const Menur = ({ ativo, ativo1, ativo2, ativo3 }: ativos) => {
 				</nav>
 				<div className="flex items-center gap-3">
 					<figure className=" h-full items-center justify-center flex">
-						<FaUserCircle className="w-full text-5xl" />
+						<img src={imagem} className="w-12"/>
 					</figure>
 					<div
 						className="flex flex-row flex-wrap items-center gap-3 cursor-pointer"
 						onClick={aparecer}
 					>
 						<h2 className="text-xl font-padrao font-bold text-navMenu">
-							Zairo Bastos
+							{nome}
 						</h2>
 						{janela ? (
 							<IoIosArrowUp className="text-xl text-navMenu" />

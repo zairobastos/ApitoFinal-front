@@ -12,7 +12,6 @@ import { api } from "../../server/api";
 import { AuthContext } from "../../context/Auth/AuthContext";
 
 export const PaginaInicial = () => {
-
 	var cont = 0;
 
 	const [partidas, setPartidas] = useState([]);
@@ -20,14 +19,14 @@ export const PaginaInicial = () => {
 	const user = useContext(AuthContext);
 
 	useEffect(() => {
-		api.get("/partida/listarTodasPartidas")
+		api.get(`/partida/listarTodasPartidas/${user.user.id}`)
 			.then((res) => {
 				setPartidas(res.data);
 			})
 			.catch((err) => {
 				console.log(err);
 			});
-	}, []);
+	}, [api]);
 
 	useEffect(() => {
 		api.get(`/campeonato/listarCampeonatos/${user.user.id}`)
@@ -35,10 +34,6 @@ export const PaginaInicial = () => {
 				setCampeonatos(res.data);
 			})
 			.catch((err) => {
-	
-	
-	
-	
 				console.log(err);
 			});
 	}, [user]);
@@ -52,18 +47,15 @@ export const PaginaInicial = () => {
 					</h2>
 					<div className="flex flex-col flex-wrap gap-6 mx-2">
 						{partidas.map((partida: any) => {
-							cont += 1
-							if(partida.placar1 != null && partida.placar2 != null && cont <= 6){
-								return(
-									<Placar
-										timeX={partida.time1Id}
-										golsX={partida.placar1}
-										timeY={partida.time2Id}
-										golsY={partida.placar2}
-									/>
-								);
-							}
-							
+							cont += 1;
+							return (
+								<Placar
+									timeX={partida.time1Id}
+									golsX={partida.placar1}
+									timeY={partida.time2Id}
+									golsY={partida.placar2}
+								/>
+							);
 						})}
 					</div>
 				</aside>

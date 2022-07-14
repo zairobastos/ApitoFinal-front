@@ -4,7 +4,9 @@ import { Linha } from "../../components/linhaTabela";
 import { NomeCampeonato } from "../../components/NomeCampeonato";
 import { SubMenu } from "../../components/subMenu";
 import { Menur } from "../../components/TelasHome/menu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { api } from "../../server/api";
 
 export const Tabela = () => {
 	const [rodada, setRodada] = useState(1);
@@ -16,12 +18,36 @@ export const Tabela = () => {
 			setRodada(rodada - 1);
 		}
 	};
+	const params = useParams();
+	const [torneio, setTorneio] = useState([]);
+	useEffect(() => {
+		api.get(`/campeonato/buscar/${params.id}`)
+			.then((res) => {
+				setTorneio(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
 	return (
 		<div>
 			<Menur ativo1="ativo" />
-			<SubMenu ativo1="ativo" titulo="Grupos e Tabelas" btnEditarAtivo={true} />
+			{torneio.map((torneios: any, index: number) => {
+				return (
+					<>
+						<SubMenu
+							ativo4="ativo"
+							titulo="Grupos e Tabelas"
+							btnEditarAtivo={true}
+							pontos={`${torneios.tipoCampeonato}`}
+							id={`${params.id}`}
+						/>
+						;
+					</>
+				);
+			})}
 			<div className="absolute mt-40 px-10 w-full flex flex-col gap-14">
-				<NomeCampeonato />
+				<NomeCampeonato id={`${params.id}`} />
 				<main className="flex w-full h-full gap-8 mb-11">
 					<table className="flex flex-col w-3/5 gap-3">
 						<h2 className="font-padrao text-3xl text-black font-bold">
@@ -133,34 +159,34 @@ export const Tabela = () => {
 							</li>
 							<Jogos
 								data="02/07/2022"
-								escudo1="images/463debd5f273f60bf2bcee425f931223.png"
+								escudo1="../../../public/images/463debd5f273f60bf2bcee425f931223.png"
 								time1="FLU"
 								golsTime1="4"
 								local="MARACANÃ"
 								hora="16:30"
-								escudo2="images/463debd5f273f60bf2bcee425f931223.png"
+								escudo2="../../../public/images/463debd5f273f60bf2bcee425f931223.png"
 								time2="FLU"
 								golsTime2="0"
 							/>
 							<Jogos
 								data="02/07/2022"
-								escudo1="images/463debd5f273f60bf2bcee425f931223.png"
+								escudo1="../../../public/images/463debd5f273f60bf2bcee425f931223.png"
 								time1="FLU"
 								golsTime1="4"
 								local="MARACANÃ"
 								hora="16:30"
-								escudo2="images/463debd5f273f60bf2bcee425f931223.png"
+								escudo2="../../../public/images/463debd5f273f60bf2bcee425f931223.png"
 								time2="FLU"
 								golsTime2="0"
 							/>
 							<Jogos
 								data="02/07/2022"
-								escudo1="images/463debd5f273f60bf2bcee425f931223.png"
+								escudo1="../../../public/images/463debd5f273f60bf2bcee425f931223.png"
 								time1="FLU"
 								golsTime1="4"
 								local="MARACANÃ"
 								hora="16:30"
-								escudo2="images/463debd5f273f60bf2bcee425f931223.png"
+								escudo2="../../../public/images/463debd5f273f60bf2bcee425f931223.png"
 								time2="FLU"
 								golsTime2="0"
 							/>
@@ -171,3 +197,6 @@ export const Tabela = () => {
 		</div>
 	);
 };
+function setTorneio(data: any) {
+	throw new Error("Function not implemented.");
+}

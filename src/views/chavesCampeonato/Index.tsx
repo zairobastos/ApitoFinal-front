@@ -66,10 +66,10 @@ export function CampeonatoEmChaves(){
 	}
 
 	
-		
-    return(
+	
 
-        <div>
+	return (
+		<div>
 			<Menur ativo1="ativo" />
 			<SubMenu ativo1="desativo" ativo4="ativo"  btnEditarAtivo={true} titulo="Campeonato"/>
 			<div className="absolute mt-40 px-10 w-full flex flex-col gap-14">
@@ -117,5 +117,5 @@ export function CampeonatoEmChaves(){
 				</main>
 			</div>
 		</div>
-    )
+	);
 }

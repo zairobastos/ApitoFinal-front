@@ -2,11 +2,12 @@ import { IoIosArrowBack } from "react-icons/io";
 import Descricao from "../../assets/images/descricao.svg";
 import Tabela from "../../assets/images/Tabela.svg";
 import Campo from "../../assets/images/campo.svg";
-import Player from "../../assets/images/Player.svg";
 import Chaves from "../../assets/images/Chaves.svg";
 import { Link } from "react-router-dom";
 import { Lista } from "./style";
 import { BtnEditar } from "../../components/btnEditarCampeonato/Index";
+
+import { IoShieldHalfOutline } from "react-icons/io5";
 
 type ativos = {
 	ativo?: string;
@@ -17,6 +18,7 @@ type ativos = {
 	titulo?: string;
 	btnEditarAtivo?: boolean;
 	pontos?: string;
+	id?: string;
 };
 
 export const SubMenu = ({
@@ -28,6 +30,7 @@ export const SubMenu = ({
 	ativo4,
 	btnEditarAtivo,
 	pontos,
+	id,
 }: ativos) => {
 	return (
 		<nav className="flex z-10 bg-preto mt-20 fixed w-full justify-between items-center text-white">
@@ -38,7 +41,7 @@ export const SubMenu = ({
 							<IoIosArrowBack className="text-lg" />
 						</li>
 					</Link>
-					<Link to="/detalhesCampeonato">
+					<Link to={`/detalhesCampeonato/${id}`}>
 						<li
 							className={`w-11 flex ${ativo} flex-wrap justify-center h-full items-center`}
 						>
@@ -46,7 +49,7 @@ export const SubMenu = ({
 						</li>
 					</Link>
 					{pontos == "PONTOS" ? (
-						<Link to="/tabelaCampeonato">
+						<Link to={`/tabelaCampeonato/${id}`}>
 							<li
 								className={`w-11 flex flex-wrap justify-center h-full items-center ${ativo1}`}
 							>
@@ -54,7 +57,7 @@ export const SubMenu = ({
 							</li>
 						</Link>
 					) : (
-						<Link to="/chavesCampeonato">
+						<Link to={`/chavesCampeonato/${id}`}>
 							<li
 								className={`w-11 flex flex-wrap justify-center h-full items-center ${ativo4}`}
 							>
@@ -62,18 +65,20 @@ export const SubMenu = ({
 							</li>
 						</Link>
 					)}
-					<Link to="/partidasCampeonato">
+					<Link to={`/partidasCampeonato/${id}`}>
 						<li
 							className={`w-11 flex flex-wrap justify-center h-full items-center ${ativo2}`}
 						>
 							<img src={Campo} alt="Icone de campo" />
 						</li>
 					</Link>
-					<li
-						className={`w-11 flex flex-wrap justify-center h-full items-center ${ativo3}`}
-					>
-						<img src={Player} alt="Icone de player" />
-					</li>
+					<Link to={`/selecioneTime/${id}`}>
+						<li
+							className={`w-11 flex flex-wrap justify-center h-full items-center ${ativo3}`}
+						>
+							<IoShieldHalfOutline className="w-3/5 h-full" />
+						</li>
+					</Link>
 				</Lista>
 			</div>
 			<div className="flex">

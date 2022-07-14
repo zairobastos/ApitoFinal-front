@@ -10,6 +10,7 @@ import { useContext, useEffect, useState } from "react";
 import { api } from "../../server/api";
 import { CircleNotch } from "phosphor-react";
 import { AuthContext } from "../../context/Auth/AuthContext";
+import { ListarTimes } from "../../components/listarTime";
 
 export const Times = () => {
 	const cadastrarTimes = Yup.object().shape({
@@ -83,10 +84,11 @@ export const Times = () => {
 					<Cards>
 						{times.map((time: any) => {
 							return (
-								<ListarJogadoresTimes
+								<ListarTimes
 									key={time.id}
 									foto={time.escudo}
 									nome={time.nome}
+									id={time.id}
 								/>
 							);
 						})}
@@ -175,7 +177,7 @@ export const Times = () => {
 									type="hidden"
 									name="userId"
 									id="userId"
-									value="665d4c6a-9268-4257-8c47-22074571b9e3"
+									value={`${user.user.id}`}
 								/>
 								<button
 									type="submit"

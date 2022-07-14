@@ -18,6 +18,10 @@ import { EditarCampeonato } from "../views/editarCampeonato/Index";
 
 import { AuthProvider } from "../context/Auth/AuthProvider";
 import { RequireAuth } from "../context/Auth/RequireAuth";
+import { SelecionarTime } from "../views/SelecionarTime";
+import { DetalhesTime } from "../views/detalhesTime";
+import { DetalhesJogador } from "../views/detalhesJogador";
+import { EditarTime } from "../views/editarTime";
 
 const Router = () => {
 	return (
@@ -83,7 +87,7 @@ const Router = () => {
 						}
 					/>
 					<Route
-						path="/tabelaCampeonato"
+						path="/tabelaCampeonato/:id"
 						element={
 							<RequireAuth>
 								<Tabela />
@@ -91,7 +95,7 @@ const Router = () => {
 						}
 					></Route>
 					<Route
-						path="/chavesCampeonato"
+						path="/chavesCampeonato/:id"
 						element={
 							<RequireAuth>
 								<CampeonatoEmChaves />
@@ -99,7 +103,7 @@ const Router = () => {
 						}
 					></Route>
 					<Route
-						path="/partidasCampeonato"
+						path="/partidasCampeonato/:id"
 						element={
 							<RequireAuth>
 								<PartidasCampeonato />
@@ -111,6 +115,38 @@ const Router = () => {
 						element={
 							<RequireAuth>
 								<EditarCampeonato />
+							</RequireAuth>
+						}
+					></Route>
+					<Route
+						path="/selecioneTime/:id"
+						element={
+							<RequireAuth>
+								<SelecionarTime />
+							</RequireAuth>
+						}
+					></Route>
+					<Route
+						path="/detalhesTime/:id"
+						element={
+							<RequireAuth>
+								<DetalhesTime />
+							</RequireAuth>
+						}
+					></Route>
+					<Route
+						path="/detalhesJogador/:id"
+						element={
+							<RequireAuth>
+								<DetalhesJogador />
+							</RequireAuth>
+						}
+					></Route>
+					<Route
+						path="/editarTime/:id"
+						element={
+							<RequireAuth>
+								<EditarTime />
 							</RequireAuth>
 						}
 					></Route>
