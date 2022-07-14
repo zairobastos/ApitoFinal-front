@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Menur } from "../../components/TelasHome/menu";
 import { AuthContext } from "../../context/Auth/AuthContext";
 import { api } from "../../server/api";
@@ -72,9 +72,12 @@ export const DetalhesTime = () => {
 						</h2>
 						<nav className="">
 							<ul className="flex flex-wrap gap-4">
-								<li className="text-padrao text-xl bg-editar text-fontEditar px-4 py-1 rounded">
-									Editar
-								</li>
+								<Link to={`/editarTime/${params.id}`}>
+									<li className="text-padrao text-xl bg-editar text-fontEditar px-4 py-1 rounded">
+										Editar
+									</li>
+								</Link>
+
 								<li
 									onClick={deletar}
 									className="text-padrao cursor-pointer text-xl bg-excluir text-fontExcluir px-4 py-1 rounded"
