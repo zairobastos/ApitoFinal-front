@@ -20,7 +20,7 @@ export const PaginaInicial = () => {
 	const user = useContext(AuthContext);
 
 	useEffect(() => {
-		api.get("/partida/listarTodasPartidas")
+		api.get(`/partida/listarTodasPartidas/${user.user.id}`)
 			.then((res) => {
 				setPartidas(res.data);
 			})
@@ -53,7 +53,6 @@ export const PaginaInicial = () => {
 					<div className="flex flex-col flex-wrap gap-6 mx-2">
 						{partidas.map((partida: any) => {
 							cont += 1
-							if(partida.placar1 != null && partida.placar2 != null && cont <= 6){
 								return(
 									<Placar
 										timeX={partida.time1Id}
@@ -62,7 +61,6 @@ export const PaginaInicial = () => {
 										golsY={partida.placar2}
 									/>
 								);
-							}
 							
 						})}
 					</div>
