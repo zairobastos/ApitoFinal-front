@@ -20,6 +20,7 @@ import { AuthProvider } from "../context/Auth/AuthProvider";
 import { RequireAuth } from "../context/Auth/RequireAuth";
 import { SelecionarTime } from "../views/SelecionarTime";
 import { DetalhesTime } from "../views/detalhesTime";
+import { DetalhesJogador } from "../views/detalhesJogador";
 
 const Router = () => {
 	return (
@@ -129,6 +130,14 @@ const Router = () => {
 						element={
 							<RequireAuth>
 								<DetalhesTime />
+							</RequireAuth>
+						}
+					></Route>
+					<Route
+						path="/detalhesJogador/:id"
+						element={
+							<RequireAuth>
+								<DetalhesJogador />
 							</RequireAuth>
 						}
 					></Route>

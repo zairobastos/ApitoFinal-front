@@ -76,6 +76,7 @@ export const Jogadores = () => {
 									key={jogador.id}
 									foto={jogador.imagem}
 									nome={jogador.nome}
+									id={jogador.id}
 								/>
 							);
 						})}
