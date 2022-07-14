@@ -1,14 +1,11 @@
-import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { Menur } from "../../components/TelasHome/menu";
-import { AuthContext } from "../../context/Auth/AuthContext";
 import { api } from "../../server/api";
 
 export const DetalhesJogador = () => {
 	const params = useParams();
 	const [torneio, setTorneio] = useState<any[]>([]);
-	const [jogador, setJogadores] = useState([]);
-	const user = useContext(AuthContext);
 	useEffect(() => {
 		api.get(`jogador/listarId/${params.id}`)
 			.then((res) => {
@@ -16,9 +13,24 @@ export const DetalhesJogador = () => {
 			})
 			.catch((err) => {});
 	}, [api]);
+
+	const navigate = useNavigate();
+	const deletar = () => {
+		let confirmacao = window.confirm("Deseja deletar o jogador?");
+		if (confirmacao) {
+			api.delete(`/jogador/deletar/${params.id}`)
+				.then((res) => {
+					navigate("/jogadores");
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		}
+	};
+
 	return (
 		<>
-			<Menur ativo2="ativo" />
+			<Menur ativo3="ativo" />
 			<div className="absolute mt-40 px-10 w-full flex flex-col gap-14">
 				<div className="flex h-32">
 					<figure className="flex items-center gap-2">
@@ -48,7 +60,10 @@ export const DetalhesJogador = () => {
 								<li className="text-padrao text-xl bg-editar text-fontEditar px-4 py-1 rounded">
 									Editar
 								</li>
-								<li className="text-padrao text-xl bg-excluir text-fontExcluir px-4 py-1 rounded">
+								<li
+									onClick={deletar}
+									className="text-padrao cursor-pointer text-xl bg-excluir text-fontExcluir px-4 py-1 rounded"
+								>
 									Excluir
 								</li>
 							</ul>
