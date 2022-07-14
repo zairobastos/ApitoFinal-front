@@ -38,7 +38,7 @@ export function Home(){
 							esportivos, e jogadores incríveis sem sair de casa.
 						</p>
 						<div className="flex justify-center flex-wrap gap-6">
-							<Link to={'/cadastrar'}>
+							<Link to={'cadastrar'}>
 								<button
 									type="button"
 									className="btn-index btn-index-preto hover:bg-verde-claro"

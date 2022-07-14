@@ -31,7 +31,7 @@ export function CampeonatoEmChaves(){
 			});
 	}, [user]);
 
-	function shuffle (array: any) {
+	const shuffle =  (array: any) => {
 	
 		var m = array.length, t, i;
 	  
@@ -58,15 +58,11 @@ export function CampeonatoEmChaves(){
 			if(timesAux != null){
 				setTimes(timesAux)
 				setIsGerarPartidas(true)
-			}
-			
+			}			
 		}
 
 		return 
-	}
-
-	
-	
+	}	
 
 	return (
 		<div>
@@ -79,7 +75,7 @@ export function CampeonatoEmChaves(){
 					</div>
                     <div className="flex flex-row gap-4 ml-[45rem] mb-1">
 
-					<Link to="/chavesCampeonato">
+					<Link to={`/chavesCampeonato/${user}`}>
 						<button
 							className="rounded-3xl
 							border-black
@@ -96,7 +92,7 @@ export function CampeonatoEmChaves(){
 						</button>
 					</Link>
                        
-					<Link to="/chavesCampeonato">
+					<Link to={`/chavesCampeonato/${user}`}>
 						<button
 							className="rounded-3xl
 							border-black
