@@ -12,7 +12,6 @@ import { api } from "../../server/api";
 import { AuthContext } from "../../context/Auth/AuthContext";
 
 export const PaginaInicial = () => {
-
 	var cont = 0;
 
 	const [partidas, setPartidas] = useState([]);
@@ -27,7 +26,7 @@ export const PaginaInicial = () => {
 			.catch((err) => {
 				console.log(err);
 			});
-	}, []);
+	}, [api]);
 
 	useEffect(() => {
 		api.get(`/campeonato/listarCampeonatos/${user.user.id}`)
@@ -48,16 +47,15 @@ export const PaginaInicial = () => {
 					</h2>
 					<div className="flex flex-col flex-wrap gap-6 mx-2">
 						{partidas.map((partida: any) => {
-							cont += 1
-								return(
-									<Placar
-										timeX={partida.time1Id}
-										golsX={partida.placar1}
-										timeY={partida.time2Id}
-										golsY={partida.placar2}
-									/>
-								);
-							
+							cont += 1;
+							return (
+								<Placar
+									timeX={partida.time1Id}
+									golsX={partida.placar1}
+									timeY={partida.time2Id}
+									golsY={partida.placar2}
+								/>
+							);
 						})}
 					</div>
 				</aside>

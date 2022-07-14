@@ -175,7 +175,7 @@ export const Times = () => {
 									type="hidden"
 									name="userId"
 									id="userId"
-									value="665d4c6a-9268-4257-8c47-22074571b9e3"
+									value={`${user.user.id}`}
 								/>
 								<button
 									type="submit"

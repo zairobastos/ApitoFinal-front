@@ -1,11 +1,12 @@
 import { useFormik } from "formik";
 import { Inputs } from "../login/input";
 import * as Yup from "yup";
-import { FormEvent, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { api } from "../../server/api";
 import { CircleNotch } from "phosphor-react";
 import { IoIosArrowBack } from "react-icons/io";
+import { AuthContext } from "../../context/Auth/AuthContext";
 
 export const FormCampeonato = () => {
 	const SingupSchema = Yup.object().shape({
@@ -131,6 +132,7 @@ export const FormCampeonato = () => {
 		"-" +
 		(dia < 10 ? "0" + dia : dia);
 
+	const user = useContext(AuthContext);
 	return (
 		<aside className="flex h-full flex-col w-1/4 border-2 border-solid border-borderForm shadow-menu rounded-xl pt-8 px-5">
 			<form
@@ -344,7 +346,7 @@ export const FormCampeonato = () => {
 					<input
 						type="hidden"
 						name="userId"
-						value="328790c5-5819-49d6-a3ff-7c7aaa4a6da2"
+						value={`${user.user.id}`}
 					/>
 					<input type="hidden" name="situacao" value="ABERTO" />
 					<div className="flex justify-between items-center flex-wrap gap-1.5">

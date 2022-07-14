@@ -43,7 +43,7 @@ export const Jogadores = () => {
 	const [jogadores, setJogadores] = useState([]);
 	const user = useContext(AuthContext);
 	useEffect(() => {
-		api.get(`/jogador/listar/af441510-bc86-4b37-847d-a684f3b9946c`)
+		api.get(`/jogador/listar/${user.user.id}`)
 			.then((res) => {
 				setJogadores(res.data);
 			})
@@ -186,7 +186,7 @@ export const Jogadores = () => {
 									type="hidden"
 									name="timeId"
 									id="userId"
-									value="665d4c6a-9268-4257-8c47-22074571b9e3"
+									value={`${user.user.id}`}
 								/>
 								<button
 									type="submit"
