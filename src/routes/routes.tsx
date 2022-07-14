@@ -83,7 +83,7 @@ const Router = () => {
 						}
 					/>
 					<Route
-						path="/tabelaCampeonato"
+						path="/tabelaCampeonato/:id"
 						element={
 							<RequireAuth>
 								<Tabela />
@@ -91,7 +91,7 @@ const Router = () => {
 						}
 					></Route>
 					<Route
-						path="/chavesCampeonato"
+						path="/chavesCampeonato/:id"
 						element={
 							<RequireAuth>
 								<CampeonatoEmChaves />
@@ -99,7 +99,7 @@ const Router = () => {
 						}
 					></Route>
 					<Route
-						path="/partidasCampeonato"
+						path="/partidasCampeonato/:id"
 						element={
 							<RequireAuth>
 								<PartidasCampeonato />

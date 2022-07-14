@@ -26,15 +26,11 @@ export const DetalhesCampeonato = () => {
 						<SubMenu
 							ativo="ativo"
 							titulo="Detalhes"
+							id={`${params.id}`}
 							pontos={torneios.tipoCampeonato}
 						/>
 						<div className="absolute mt-40 px-10 w-full flex flex-col gap-14">
-							<NomeCampeonato
-								nome={torneios.nome}
-								dataFim={torneios.dataFim}
-								dataInicio={torneios.dataInicio}
-								logo={`../../../public/${torneios.logo}`}
-							/>
+							<NomeCampeonato id={`${params.id}`} />
 							<main className="flex flex-col gap-7 z-0">
 								<div className="flex flex-col">
 									<h3 className="uppercase text-buttonCard font-padrao font-black text-lg">
